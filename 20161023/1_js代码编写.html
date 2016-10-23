@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #mun {
+            /*background: black;*/
+            width: 100px;
+            height: 30px;
+        }
+
+        #mun .top-1 {
+            background: black;
+            list-style: none;
+            /*margin-bottom: 3px;*/
+        }
+
+        #mun .top-1 h3 {
+            color: aliceblue;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #mun .zi {
+            display: none;
+        }
+
+        #mun .zi li {
+            color: aqua;
+            border-bottom: 2px dashed sienna;
+            background: darkgray;
+            text-align: center;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        #mun a {
+            display: block;
+            text-decoration: none;
+            line-height: 30px;
+            /*background: black;*/
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="mun">
+    <li class="top-1">
+        <h3>lin1</h3>
+        <ul class="zi">
+            <li>sublink1</li>
+            <li>sublink2</li>
+            <li>sublink3</li>
+        </ul>
+    </li>
+    <li class="top-1">
+        <h3>lin2</h3>
+        <ul class="zi">
+            <li>sublink1</li>
+            <li>sublink2</li>
+            <li>sublink3</li>
+        </ul>
+    </li>
+</ul>
+<script>
+    //利用子代的方法选中所需要的子代
+    //    var oUl = document.getElementById("mun");
+    //    var aLi = oUl.children;
+    //    for (var i = 0; i < aLi.length; i++) {
+    //        aLi[i].onclick = function () {
+    //            var oSu = this.children[1];
+    //            if (oSu.style.display == 'block') {
+    //                oSu.style.display = 'none';
+    //            } else {
+    //                oSu.style.display = 'block';
+    //            }
+    //        }
+    //
+    //    }
+
+    //最普通的用法
+    //
+    //            var oUl=document.getElementById("mun");
+    //            var aLi=oUl.getElementsByTagName('li');
+    //            for(var i=0;i<aLi.length;i++)
+    //            {
+    //        if(aLi.className="top-1")
+    //        {
+    //            aLi[i].onmouseout=function () {
+    //                var oSu = this.getElementsByTagName('ul')[0];
+    //                oSu.style.display = 'none';
+    //
+    //            }
+    //        }
+    //      }
+
+    //利用索引的方法找到目标
+    //    var oUl = document.getElementById('mun');
+    //    var aH3 = oUl.getElementsByTagName('h3');
+    //    var aMo = oUl.getElementsByTagName('ul');
+    //    for (var i = 0; i < aH3.length; i++) {
+    //        aH3[i].index = i;
+    //        aH3[i].onclick = function () {
+    //            aMo[this.index].style.display = 'block';
+    //        }
+    //    }
+
+
+    //利用调用函数功能的关系找到目标
+    //    var oUl = document.getElementById('mun');
+    //    var aH3 = oUl.getElementsByTagName('h3');
+    //    for (var i = 0; i < aH3.length; i++) {
+    //        aH3[i].onclick = function () {
+    //            next(this).style.display = 'block';
+    //        }
+    //    }
+    //    function next(elem) {
+    //        do {
+    //            elem = elem.nextSibling;
+    //        } while (elem && elem.nodeType != 1);
+    //        return elem;
+    //
+    //    }
+
+    var oUl = document.getElementById('mun');
+    var aH3 = oUl.getElementsByTagName('h3');
+    var aSubMenu = oUl.getElementsByTagName('ul');
+    for (var i = 0; i < aH3.length; i++) {
+        aH3[i].index = i;
+        aH3[i].bShow = false;
+        aH3[i].onclick = function () {
+            var oSubMenu = aSubMenu[this.index];
+            if(this.bShow){
+                oSubMenu.style.display = 'none';
+            }else {
+                oSubMenu.style.display='block';
+            }
+            this.bShow=!this.bShow;
+
+
+        }
+    }
+
+
+</script>
+<script>
+
+</script>
+</body>
+</html>
