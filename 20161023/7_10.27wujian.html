@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #container {
+            margin: 100px auto;
+            width: 400px;
+            height: 500px;
+        }
+
+        #tab {
+            overflow: hidden;
+        }
+
+        #tab li {
+            width: 100px;
+            height: 30px;
+            float: left;
+            margin-right: 2px;
+            background: grey;
+            color: azure;
+            list-style: none;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        #tab .selected {
+            background-color: black;
+        }
+
+        #content {
+            width: 400px;
+            height: 470px;
+            background: black;
+            color: white;
+            /*display: none;*/
+        }
+
+        #content div {
+            display: none;
+        }
+
+        #content .selected {
+            display: block;
+            /*color: white;*/
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="tab">
+        <li class="selected">css</li>
+        <li>js</li>
+        <li>html</li>
+    </ul>
+    <div id="content">
+        <div class="selected">111</div>
+        <div>222</div>
+        <div>333</div>
+    </div>
+</div>
+<!--<script>
+    var oDiv = document.getElementById('container');
+    var aLi = oDiv.getElementsByTagName('li');
+    var oContent=document.getElementById('content');
+    var aDiv=oContent.children;
+//    var aDiv = oDiv.getElementsByTagName('div');
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].index = i;
+        aLi[i].onclick = function () {
+            var oTxt = aDiv[this.index];
+            for (var i = 0; i < aLi.length; i++) {
+                aDiv[i].className = '';
+                aLi[i].className = '';
+            }
+//            alert(aLi[this.index]);
+            aLi[this.index].className = 'selected';
+            oTxt.className = 'selected';
+        }
+    }
+</script>-->
+<script>
+    var oTab=document.getElementById('tab');
+    var aLi=oTab.children;
+    var oContent=document.getElementById('content');
+    var aDiv=oContent.children;
+    for(var i=0;i<aLi.length;i++){
+        aLi[i].index=i;
+        aLi[i].onclick=function () {
+          //var oSub=aDiv[this.index];
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].className='';
+                aDiv[i].className='';
+            }
+            aLi[this.index].className='selected';
+            aDiv[this.index].className='selected';
+
+        }
+    }
+</script>
+</body>
+
+</html>
