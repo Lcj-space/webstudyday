@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>折叠菜单</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #mun {
+            width: 100px;
+
+            /*background: black;*/
+            color: white;
+            /*margin-bottom: 1px;*/
+
+        }
+
+        #mun h3 {
+            width: 100px;
+            height: 30px;
+            background: black;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        #mun .zi {
+            display: none;
+
+        }
+
+        #mun .zi li {
+            list-style: none;
+            /*display: none;*/
+            width: 100px;
+            height: 30px;
+            background: grey;
+            border-bottom: 1px yellow dashed;
+            line-height: 30px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="mun">
+    <li>
+        <h3 class="top-1">line1</h3>
+        <ul class="zi">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ul>
+    </li>
+    <li>
+        <h3 class="top-1">line2</h3>
+        <ul class="zi">
+            <li>ahh</li>
+            <li>www</li>
+            <li>cqq</li>
+        </ul>
+    </li>
+</ul>
+<script>
+    var oUl = document.getElementById('mun');
+    //var oSubm=oUl.getElementsByTagName('ul');
+    var aLi = oUl.children;
+    var bShow = false;
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].onclick = function () {
+            //var oSubUl = this.children[1];
+//            if (oSubUl.style.display == 'block') {
+//                oSubUl.style.display = 'none';
+//            } else {
+//                oSubUl.style.display = 'block';
+//            }
+
+
+//            if (this.children[1].style.display == 'block') {
+//                //alert(this.children[1]);
+//                this.children[1].style.display = 'none';
+//            } else {
+//                this.children[1].style.display = 'block';
+//            }
+//
+//        };
+            var oSubUl = this.children[1];
+            if (this.bShow) {
+
+                oSubUl.style.display = 'none';
+            } else {
+               oSubUl.style.display = 'block';
+
+//                alert(oSubUl.style.display);
+            }
+            this.bShow = !this.bShow;
+//            alert(bShow);
+
+        };
+        aLi[i].onselectstart = function () {
+            return false;
+        }
+    }
+
+</script>
+</body>
+</html>
