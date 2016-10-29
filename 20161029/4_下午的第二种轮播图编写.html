@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮番图</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #tab {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        #tab .select {
+            background-color: yellowgreen;
+        }
+
+        #tab li {
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            background: black;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            float: left;
+            margin-left: 2px;
+            cursor: pointer;
+        }
+
+        #container {
+            width: 919px;
+            height: 345px;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #content{
+            position: absolute;
+            /*overflow: hidden;*/
+            left:0;
+            transition: 1s;
+        }
+
+        #content img {
+            width: 919px;
+            height: 345px;
+            /*display: none;*/
+            float: left;
+        }
+
+        /*#content .select {*/
+            /*display: block;*/
+        /*}*/
+
+        #btn {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+
+        #btn span {
+            background: black;
+            float: left;
+            width: 20px;
+            height: 20px;
+            color: white;
+            text-align: center;
+            line-height: 20px;
+            margin-right: 2px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+
+    <div id="content">
+        <img src="img/1.jpg" alt="">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+        <img src="img/4.jpg" alt="">
+    </div>
+    <div id="btn">
+        <span id="prev">&lt;</span>
+        <span id="next">&gt;</span>
+    </div>
+    <ul id="tab">
+        <li class="select">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+</body>
+<script>
+    var oContainer=document.getElementById('container');
+    var oUl = document.getElementById('tab');
+    var aLi = oUl.children;
+    var oContent = document.getElementById('content');
+    var aImg = oContent.children;
+    var oNext = document.getElementById('next');
+    var oPrev = document.getElementById('prev');
+    var timer = null;
+    var index = 0;
+    oContent.style.width=aImg[0].offsetWidth*aImg.length +'px';
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].index = i;
+        aLi[i].onmouseover = function () {
+            index = this.index;
+            changeImg(index);
+        }
+    }
+
+    function changeImg(index) {
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].className = '';
+//            aImg[i].className = '';
+        }
+        aLi[index].className = 'select';
+        oContent.style.left=-aImg[0].offsetWidth*index + 'px';
+//        aImg[index].className = 'select';
+
+    }
+    oNext.onclick = function () {
+        index = (++index) % aLi.length;
+        changeImg(index);
+    };
+
+    oPrev.onclick = function () {
+        if (index) {
+            index--;
+        } else {
+            index = aLi.length - 1;
+        }
+        changeImg(index);
+    };
+
+    function run() {
+        timer = setInterval(function () {
+            oNext.onclick();
+        }, 2000)
+    }
+    run();
+
+    oContainer.onmouseover = function () {
+        clearInterval(timer);
+//        alert(oUl.onmouseover);
+    };
+
+    oContainer.onmouseout = function () {
+        run();
+    };
+
+    document.onselectstart = function () {
+        return false;
+    }
+</script>
+</html>

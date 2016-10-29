@@ -14,6 +14,7 @@
             height: 345px;
             background: grey;
             margin: 50px auto;
+            overflow: hidden;
             position: relative;
         }
 
@@ -21,6 +22,7 @@
             position: absolute;
             right: 10px;
             bottom: 10px;
+            z-index: 1;
         }
 
         /*#tab li:hover {*/
@@ -29,6 +31,11 @@
 
         #tab .select {
             background-color: aqua;
+        }
+        #content{
+            position: absolute;
+            left:0;
+            transition: .5s;
         }
 
         #container li {
@@ -45,11 +52,7 @@
         }
 
         #content img {
-            display: none;
-        }
-
-        #content .select {
-            display: block;
+            float: left;
         }
 
         #content img {
@@ -87,7 +90,7 @@
         <li>4</li>
     </ul>
     <div id="content">
-        <img class="select" src="img/1.jpg" alt="">
+        <img src="img/1.jpg" alt="">
         <img src="img/2.jpg" alt="">
         <img src="img/3.jpg" alt="">
         <img src="img/4.jpg" alt="">
@@ -105,7 +108,8 @@
     var oPrev = document.getElementById('prev');
     var iNow = 0;
     var timer = null;
-
+    var oContent=document.getElementById('content');
+    oContent.style.width=aImg[0].offsetWidth*aImg.length +'px';
     //    for (var i = 0; i < aLi.length; i++) {
     //        aLi[i].index = i;
     //        aLi[i].onmouseover = function () {
@@ -130,10 +134,9 @@
     function changeImg(index) {
         for (var i = 0; i < aLi.length; i++) {
             aLi[i].className = '';
-            aImg[i].className = '';
         }
         aLi[index].className = 'select';
-        aImg[index].className = 'select';
+        oContent.style.left                =-aImg[0].offsetWidth*index + 'px';
     }
     oNext.onclick = function () {
         iNow = (++iNow) % aLi.length;
