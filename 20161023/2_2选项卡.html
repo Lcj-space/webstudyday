@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #container {
+
+            width: 300px;
+            height: 400px;
+            /*background: gray;*/
+            margin: 100px auto;
+        }
+
+        #tab {
+            overflow: hidden;
+        }
+
+        #container li {
+            list-style: none;
+            background: red;
+            width: 80px;
+            height: 30px;
+            float: left;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+            color: aliceblue;
+        }
+
+        #content {
+            height: 370px;
+            background: gray;
+            border-top: 1px black solid;
+
+        }
+
+        #content div {
+            display: none;
+        }
+
+        #content .selected {
+            display: block;
+        }
+
+        #tab .selected {
+            background: black;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="tab">
+        <li class="selected">html</li>
+        <li>css</li>
+        <li>js</li>
+    </ul>
+    <div id="content">
+        <div class="selected">111</div>
+        <div>222</div>
+        <div>333</div>
+    </div>
+
+
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var aLi = oContainer.getElementsByTagName('li');
+    var oConternt = document.getElementById('content');
+    var aDiv = oConternt.children;
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].index = i;
+        aLi[i].onclick = function () {
+            var oSub = aDiv[this.index];
+            for (var i = 0; i < aDiv.length; i++) {
+                aDiv[i].className = '';
+                aLi[i].className='';
+            }
+            oSub.className = 'selected';
+            this.className = 'selected';
+        }
+    }
+
+
+</script>
+</body>
+</html>
