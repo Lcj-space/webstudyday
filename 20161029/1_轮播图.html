@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #container {
+            width: 919px;
+            height: 345px;
+            background: grey;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        #tab {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        /*#tab li:hover {*/
+        /*background-color: darkorange;*/
+        /*}*/
+
+        #tab .select {
+            background-color: aqua;
+        }
+
+        #container li {
+            width: 20px;
+            height: 20px;
+            list-style: none;
+            float: left;
+            text-align: center;
+            line-height: 20px;
+            background: black;
+            margin-right: 5px;
+            color: azure;
+            cursor: pointer;
+        }
+
+        #content img {
+            display: none;
+        }
+
+        #content .select {
+            display: block;
+        }
+
+        #content img {
+            width: 919px;
+            height: 345px;
+        }
+
+        #btn {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+
+        }
+
+        #btn span {
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            background: black;
+            color: white;
+            float: left;
+            margin-right: 2px;
+            line-height: 20px;
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="tab">
+        <li class="select">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div id="content">
+        <img class="select" src="img/1.jpg" alt="">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+        <img src="img/4.jpg" alt="">
+    </div>
+    <div id="btn">
+        <span>&lt;</span>
+        <span id="next">&gt;</span>
+    </div>
+</div>
+<script>
+    var oUl = document.getElementById('container');
+    var aLi = oUl.getElementsByTagName('li');
+    var aImg = oUl.getElementsByTagName('img');
+    var oNext = document.getElementById('next');
+    var iNow = 0;
+
+    //    for (var i = 0; i < aLi.length; i++) {
+    //        aLi[i].index = i;
+    //        aLi[i].onmouseover = function () {
+    //            var oImg = aImg[this.index];
+    //            for (var i = 0; i < aLi.length; i++) {
+    //                // alert(oImg);
+    //                aImg[i].className = '';
+    //                aLi[i].className = '';
+    //            }
+    //            aImg[this.index].className = 'select';
+    //            aLi[this.index].className = 'select';
+    //            //alert(aLi[this.index]);
+    //        }
+    //    }
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].index = i;
+        aLi[i].onmouseover = function () {
+            changeImg(this.index);
+        }
+    }
+    function changeImg(index) {
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].className = '';
+            aImg[i].className = '';
+        }
+        aLi[index].className = 'select';
+        aImg[index].className = 'select';
+    }
+    oNext.onclick = function () {
+        iNow = (++iNow) % aLi.length;
+        console.log(iNow);
+        changeImg(iNow);
+    };
+
+
+</script>
+</body>
+</html>
