@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>程序员的晚上啊</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #drag {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            /*绝对定位是不是不会产生图片移动时产生的选中状态*/
+        }
+    </style>
+</head>
+<body>
+<div id='container'>
+    <p>哈哈哈哈哈哈哈</p>
+    <div id="drag"></div>
+</div>
+<script>
+    var oDrag = document.getElementById('drag');
+    oDrag.onmousedown = function (e) {
+        e = e || window.event;
+        var iDisX = e.clientX - oDrag.offsetLeft;
+        var iDisY = e.clientY - oDrag.offsetTop;
+        document.onmousemove = function (e) {
+            e = e || window.event;
+            var left = e.clientX - iDisX;
+            var top = e.clientY - iDisY;
+            oDrag.style.left = left + 'px';
+            oDrag.style.top = top + 'px';//特别注意需要加上后面的PX，不加的话就无法实现函数的作用了
+            return false;
+        };
+    };
+    oDrag.onmouseup = function () {
+        oDrag.onmousemove = null;
+    };
+    document.onselectstart = function () {
+        return false;
+    }
+</script>
+</body>
+</html>
