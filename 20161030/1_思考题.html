@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+
+        #drag {
+            background: red;
+            width: 200px;
+            height: 200px;
+            /*margin: 100px auto;*/
+            cursor: pointer;
+            position: relative;
+            /*position: fixed;*/
+        }
+    </style>
+</head>
+<body>
+<p>hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
+<div id="drag"></div>
+<script>
+    (function () {
+        var oDrag = document.getElementById('drag');
+        oDrag.onmousedown = function (e) {
+            e = e || window.event;//e事件对象，解决兼容性问题
+//            var target = e.target || e.srcElement;
+//            alert(target);
+            var iDisX = e.clientX - this.offsetLeft;
+
+            var iDisY = e.clientY - this.offsetTop;
+            oDrag.onmousemove = function (e) {
+                e = e || window.event;
+                var left = e.clientX - iDisX;
+                var top = e.clientY - iDisY;
+                this.style.left = left + 'px';
+                this.style.top = top + 'px';
+                return false;
+            };
+        };
+
+
+        oDrag.onmouseup = function () {
+            document.onmousemove =null;
+        };
+    })();
+    document.onselectstart = function () {
+        return false;
+    }
+</script>
+</body>
+</html>
+<!--
+ 事件
+ 1.事件源
+ 2.事件处理函数
+ 3.事件对象
+
+-->

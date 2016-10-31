@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #container {
+
+            background: black;
+            width: 220px;
+            height: 300px;
+            position: relative;
+            left: 50px;
+            top: 50px;
+
+        }
+
+        #content {
+            width: 200px;
+            height: 300px;
+            background: grey;
+            position: absolute;
+            left:0;
+            top:0;
+
+        }
+
+        #roll {
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: gold;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        1呵呵呵呵或和或或或或或或
+        或或或或或或或或或或或或或或或或或或或或或或或或或
+        或或或或或或或或或或或或或或或或或或或或或或或2
+    </div>
+    <div id="roll"></div>
+</div>
+<script>
+    var oRoll = document.getElementById('roll');
+    var oContainer= document.getElementById('con');
+    var oContent = document.getElementById('content');
+    oRoll.onmousedown = function (e) {
+        e = e || window.event;
+        var iDiY = e.clientY - oRoll.offsetTop;
+        document.onmousemove = function (e) {
+            e = e || window.event;
+            var top = e.clientY - iDiY;
+            if (top < 0) {
+                top = 0;
+            }
+            if (top > oContent.offsetHeight - oRoll.offsetHeight) {
+                top = oContent.offsetHeight - oRoll.offsetHeight;
+            }
+            oRoll.style.top = top + 'px';
+            return false;
+        };
+    }
+
+</script>
+</body>
+</html>

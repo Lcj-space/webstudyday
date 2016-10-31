@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #drag {
+            width: 200px;
+            height: 200px;
+            background: grey;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<h1>ppppppppppppppppppppppp</h1>
+<div id="drag"></div>
+
+<script>
+    (function () {
+        var oDrag = document.getElementById('drag');
+        oDrag.onmousedown = function (e) {
+            e = e || window.event;
+            var iDisX = e.clientX - oDrag.offsetLeft;
+            var iDisY = e.clientY - oDrag.offsetTop;
+            document.onmousemove = function (e) {
+                e = e || window.event;
+                var left = e.clientX - iDisX;
+                var top = e.clientY - iDisY;
+                oDrag.style.left = left + 'px';
+                console.log(oDrag.style.left);
+                oDrag.style.top = top + 'px';
+                return false;//防止文本选中的问题
+            };
+
+        };
+
+        document.onmouseup = function () {
+            document.onmousemove = null;
+        }
+    })();
+</script>
+</body>
+</html>
