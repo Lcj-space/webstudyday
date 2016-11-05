@@ -4,49 +4,105 @@
     <meta charset="UTF-8">
     <title>放大镜</title>
     <style>
-        *{
+        * {
             padding: 0;
             margin: 0;
         }
-        #container{
-            /*position: relative;*/
+
+        #container {
+            position: relative;
             overflow: hidden;
             width: 645px;
-            /*height: 500px;*/
-            margin: 60px auto;
+            height: 500px;
+            /*margin: 60px auto;*/
         }
-        #content{
+
+        #content {
             width: 215px;
             height: 215px;
             background: grey;
-            /*position: absolute;*/
-            /*left: 0;*/
-            /*top: 0;*/
+            position: absolute;
+            left: 0;
+            top: 0;
+            float: left;
+            z-index: 1;
 
         }
-        #content img{
+
+        #content img {
             width: 215px;
             height: 215px;
         }
-        #container div{
-            float: left;
-        }
+
         #hidden{
-            /*display: none;*/
-            /*position: absolute;*/
-            /*right: 0;*/
-            /*top: 0;*/
+            width: 215px;
+            height: 215px;
+            position: relative;
+
+            float: left;
+            /*overflow: hidden;*/
         }
+        #hidden img {
+            position: absolute;
+            right: 0;
+            top:0;
+            /*width: 430px;*/
+            /*height: 430px;*/
+        }
+
     </style>
 </head>
 <body>
 <div id="container">
     <div id="content"><img src="img/6.jpg" alt=""></div>
     <div id="hidden"><img src="img/6.jpg" alt=""></div>
+    <div id="glass"></div>
 </div>
 <script>
-    var oContent=document.getElementById('content');
-
+    //    var oContent = document.getElementById('content');
+    //    var oContainer = document.getElementById('container');
+    //    var oGlass = document.getElementById('glass');
+    //    var oHidden = document.getElementById('hidden');
+    //    oContent.onmouseover = function () {
+    //        oGlass.style.display = 'block';
+    //        oHidden.style.display = 'block';
+    //    };
+    //    //    oGlass.onmouseover = function (e) {
+    //    //        e = e || window.event;
+    //    //        var oDix = e.clientX - oGlass.offsetLeft;
+    //    //        var oDiy = e.clientY - oGlass.offsetTop;
+    //
+    //    oContent.onmousemove = function (e) {
+    //        e = e || window.event;
+    //        var left = e.clientX - oGlass.offsetWidth / 2;
+    //        var top = e.clientY - oGlass.offsetHeight / 2;
+    //        var MaxLeft = oContent.offsetWidth - oGlass.offsetWidth;
+    //        var MaxHigt = oContent.offsetHeight - oGlass.offsetHeight;
+    //        if (left < 0) {
+    //            left = 0;
+    //        }
+    //        if (left > MaxLeft) {
+    //            left = MaxLeft;
+    //        }
+    //        if (top < 0) {
+    //            top = 0;
+    //        }
+    //        if (top > MaxHigt) {
+    //            top = MaxHigt;
+    //        }
+    //        oGlass.style.left = left + 'px';
+    ////           console.log(this.left);
+    //        oGlass.style.top = top + 'px';
+    ////           return false;
+    //    };
+    //
+    //    oContent.onmouseout = function () {
+    //        oGlass.style.display = 'none';
+    //        oHidden.style.display = 'none';
+    //    };
+    //    document.onselectstart = function () {
+    //        return false;
+    //    }
 </script>
 </body>
 </html>

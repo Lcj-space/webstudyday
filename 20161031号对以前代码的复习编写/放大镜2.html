@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #content {
+            position: relative;
+            float: left;
+        }
+
+        #content img {
+            width: 215px;
+            height: 215px;
+        }
+
+        #glass {
+            width: 50px;
+            height: 50px;
+            background: gray;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+            opacity: 0.5;
+        }
+
+        /*div{*/
+        /*float: left;*/
+        /*}*/
+        #hidden {
+            position: relative;
+            left: 0;
+            top: 0;
+            float: left;
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            display: none;
+            border: 1px solid black;
+        }
+
+        #hidden img {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+    <div id="glass"></div>
+    <img src="img/6.jpg" alt="">
+</div>
+<div id="hidden">
+    <img id="big" src="img/6.jpg" alt="" >
+</div>
+</body>
+<script>
+    var oGlass = document.getElementById('glass');
+    var oHidden = document.getElementById('hidden');
+    var oContent = document.getElementById('content');
+    var oBig =  oHidden.children[0];
+    console.log(oBig);
+    oContent.onmouseover = function () {
+        oGlass.style.display = 'block';
+        oHidden.style.display = 'block';
+    };
+
+    oContent.onmouseout = function () {
+        oGlass.style.display = 'none';
+        oHidden.style.display = 'none';
+    };
+
+    oContent.onmousemove = function (e) {
+        e = e || window.event;
+        var left = e.clientX - oGlass.offsetWidth / 2;
+        var top = e.clientY - oGlass.offsetHeight / 2;
+        var Maxwidth = oContent.offsetWidth - oGlass.offsetWidth;
+        var Maxheight = oContent.offsetHeight - oGlass.offsetHeight;
+        if (left < 0) {
+            left = 0;
+        }
+        if (left > Maxwidth) {
+            left = Maxwidth;
+        }
+        if (top < 0) {
+            top = 0;
+        }
+        if (top > Maxheight) {
+            top = Maxheight;
+        }
+        oGlass.style.left = left + 'px';
+        oGlass.style.top = top + 'px';
+
+        var fScaleX = left/Maxwidth;
+        var fScaleY= top/Maxheight;
+
+        oBig.style.left= -fScaleX*(oBig.offsetWidth-oContent.offsetWidth) + 'px';
+        oBig.style.top= -fScaleY*(oBig.offsetHeight-oContent.offsetHeight) + 'px';
+
+    };
+
+    document.onselectstart=function () {
+        return false;
+    }
+</script>
+</html>
