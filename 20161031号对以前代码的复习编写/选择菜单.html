@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择菜单利用数组存储内容</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+            float: left;
+            /*background: grey;*/
+        }
+
+        #container {
+            width: 400px;
+            height: 600px;
+            /*background: grey;*/
+            margin: 100px auto;
+        }
+
+        #tab {
+            overflow: hidden;
+        }
+
+        #tab li {
+            width: 100px;
+            height: 30px;
+            margin-right: 2px;
+            text-align: center;
+            line-height: 30px;
+            background: grey;
+            color: white;
+        }
+
+        #container .select {
+            background: gold;
+        }
+
+        #content {
+            background: deepskyblue;
+            height: 569px;
+            width: 400px;
+            margin-top: 1px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="tab">
+        <li class="select">one</li>
+        <li>two</li>
+        <li>three</li>
+    </ul>
+    <div id="content">111</div>
+</div>
+<script>
+    var oUl = document.getElementById('container');
+    var aLi = oUl.getElementsByTagName('li');
+    var oContent = document.getElementById('content');
+    var aRr = [111, 222, 333];
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].index = i;
+        aLi[i].onmouseover = function () {
+            for (var i = 0; i < aLi.length; i++) {
+                //aLi[this.index].className = '';
+                //为什么写this.index就不行呢；直接就打印了三次。
+                aLi[i].className = '';
+                console.log(aLi[this.index]);
+            }
+            this.className = 'select';
+            oContent.innerHTML = aRr[this.index];
+        };
+//        aLi[i].className='select';
+    }
+</script>
+</body>
+</html>

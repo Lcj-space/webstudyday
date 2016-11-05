@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #container {
+            width: 919px;
+            height: 415px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        #tab {
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+            z-index: 1;
+        }
+
+        #tab .selected {
+            background: deepskyblue;
+        }
+
+        #tab li {
+            float: left;
+            background: black;
+            width: 20px;
+            height: 20px;
+            margin-right: 2px;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            line-height: 20px;
+        }
+       #content{
+           position: absolute;
+           left: 0;
+       }
+        #content img {
+            width: 919px;
+            height: 415px;
+            display: none;
+        }
+
+        #content .selected {
+            display: block;
+        }
+
+        #btn {
+            position: absolute;
+            left: 20px;
+            bottom: 10px;
+        }
+
+        #btn span {
+            cursor: pointer;
+            display: block;
+            margin-right: 2px;
+            background: black;
+            float: left;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="tab">
+        <li class="selected">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div id="content">
+        <img src="img/1.jpg" alt="" class="selected">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+        <img src="img/4.jpg" alt="">
+    </div>
+    <div id="btn">
+        <span>&lt;</span>
+        <span id="next">&gt;</span>
+    </div>
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var aLi = oContainer.getElementsByTagName('li');
+    var oContent = document.getElementById('content');
+    var oNext = document.getElementById('next');
+    var aImg = oContent.children;
+    var a = 0;
+    //    var index = 0;
+    //    for (var i = 0; i < aLi.length; i++) {
+    //        aLi[i].index = i;
+    //        aLi[i].onmouseover = function () {
+    //            for (var i = 0; i < aLi.length; i++) {
+    //                aLi[i].className = '';
+    //                aImg[i].className = '';
+    //            }
+    //            this.className = 'selected';
+    //            aImg[this.index].className = 'selected';
+    //        }
+    //    }
+    ////    for (var i = 0; i < aLi.length; i++) {
+    ////        aLi[i].index = i;
+    //        oNext.onclick = function () {
+    //            aLi[i].onmouseover();
+    //        };
+    ////    }
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].index = i;
+        aLi[i].onmouseover = function () {
+            changeImg(this.index);
+            a = index;
+        }
+    }
+    function changeImg(index) {
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].className = '';
+            aImg[i].className = '';
+        }
+        aLi[index].className = 'selected';
+        aImg[index].className = 'selected';
+    }
+
+    oNext.onclick = function () {
+        a = (++a) % aLi.length;
+        changeImg(a);
+    };
+
+    function run() {
+        timer=setInterval(function () {
+            oNext.onclick();
+        },1000)
+    }
+    run();
+
+    oContent.onmouseover=function () {
+      clearInterval(timer);
+    };
+    oContent.onmouseout=function () {
+        run();
+    }
+
+</script>
+</body>
+</html>

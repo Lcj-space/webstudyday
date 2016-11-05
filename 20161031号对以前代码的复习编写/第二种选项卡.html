@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .tab h3 {
+            width: 50px;
+            height: 30px;
+            background: black;
+            color: azure;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .tab li {
+            width: 50px;
+            height: 30px;
+            background: grey;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            border-bottom: 1px gold solid;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="container">
+    <li class="tab">
+        <h3>one</h3>
+        <ul class="content">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ul>
+    </li>
+    <li class="tab">
+        <h3>two</h3>
+        <ul class="content">
+            <li>b</li>
+            <li>c</li>
+            <li>d</li>
+        </ul>
+    </li>
+</ul>
+<script>
+    var oUl = document.getElementById('container');
+    var aH3 = oUl.getElementsByTagName('h3');
+    var aContent = oUl.getElementsByTagName('ul');
+    for (var i = 0; i < aH3.length; i++) {
+        aH3[i].index=i;
+        aH3[i].onclick=function () {
+            var oClick=aContent[this.index];
+             oClick.bShow=false;
+             if(this.bShow){
+                 oClick.style.display='none';
+             }else {
+                 oClick.style.display='block';
+             }
+             this.bShow=!this.bShow;
+
+         }
+    }
+</script>
+</body>
+</html>

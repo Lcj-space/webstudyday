@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择菜单利用div存储内容</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+            float: left;
+            /*background: grey;*/
+        }
+
+        #container {
+            width: 400px;
+            height: 600px;
+            /*background: grey;*/
+            margin: 100px auto;
+        }
+
+        #tab {
+            overflow: hidden;
+        }
+
+        #tab li {
+            width: 100px;
+            height: 30px;
+            margin-right: 2px;
+            text-align: center;
+            line-height: 30px;
+            background: black;
+            color: white;
+        }
+
+        #container .select {
+            background: gold;
+        }
+
+        #content {
+            background: black;
+            height: 569px;
+            width: 400px;
+            margin-top: 1px;
+            color: white;
+
+        }
+        #content div{
+            display: none;
+        }
+        #content .select{
+            background: black;
+            display: block;
+            height: 569px;
+            width: 400px;
+            margin-top: 1px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="tab">
+        <li class="select">one</li>
+        <li>two</li>
+        <li>three</li>
+    </ul>
+    <div id="content">
+        <div class="select"><img src="img/1.jpg" alt="" width="400" height="100%"></div>
+        <div><img src="img/2.jpg" alt="" ></div>
+        <div><img src="img/3.jpg" alt=""></div>
+    </div>
+</div>
+<script>
+    var oUl = document.getElementById('container');
+    var aLi = oUl.getElementsByTagName('li');
+    var oContent = document.getElementById('content');
+    var aDiv= oContent.getElementsByTagName('div');
+    var aRr = [111, 222, 333];
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].index = i;
+        aLi[i].onmouseover = function () {
+            for (var i = 0; i < aLi.length; i++) {
+                //aLi[this.index].className = '';
+                //为什么写this.index就不行呢；直接就打印了三次。
+                aLi[i].className = '';
+                aDiv[i].className='';
+                console.log(aLi[this.index]);
+            }
+            this.className = 'select';
+            aDiv[this.index].className='select';
+//            oContent.innerHTML = aRr[this.index];
+        };
+//        aLi[i].className='select';
+    }
+</script>
+</body>
+</html>
