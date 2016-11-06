@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缓慢滑动</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #container{
+            width: 800px;
+            height: 500px;
+            /*background: gray;*/
+            margin:100px auto;
+            position: relative;
+            border: 1px gray dashed;
+            /*overflow: hidden;*/
+
+        }
+        #content{
+            width: 800px;
+            overflow: hidden;
+            /*background: blue;*/
+        }
+        #content div{
+            text-align: center;
+            line-height: 450px;
+            width: 180px;
+            height: 450px;
+            background: black;
+            color: white;
+            float: left;
+            margin-right: 20px;
+            overflow: hidden;
+        }
+        #btn{
+            position: absolute;
+            bottom: 10px;
+            left: 350px;
+        }
+        #btn span{
+            display: block;
+            float: left;
+            margin-left: 2px;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            background: gray;
+            width: 50px;
+            height: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+    <div id="btn">
+        <span>&lt;&lt;向左</span>
+        <span>向右&gt;&gt;</span>
+    </div>
+</div>
+</body>
+</html>

@@ -12,6 +12,8 @@
         #content {
             position: relative;
             float: left;
+            width: 215px;
+            height: 215px;
         }
 
         #container {
@@ -50,7 +52,7 @@
             height: 300px;
             overflow: hidden;
             display: none;
-            border: 1px solid black;
+            border: 1px dashed gray;
         }
 
         #hidden img {
@@ -58,11 +60,25 @@
             left: 0;
             top: 0;
         }
+
+        #mask {
+            width: 100%;
+            height: 100%;
+            background: gray;
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            filter: alpha(opacity=0);
+            z-index: 1;
+            cursor: move;
+        }
     </style>
 </head>
 <body>
 <div id="container">
     <div id="content">
+        <div id="mask"></div>
         <div id="glass"></div>
         <img src="img/6.jpg" alt="">
     </div>
@@ -77,21 +93,22 @@
     var oHidden = document.getElementById('hidden');
     var oContent = document.getElementById('content');
     var oBig = oHidden.children[0];
-    var oContainer=document.getElementById('container');
+    var oContainer = document.getElementById('container');
+    var oMask = document.getElementById('mask');
     console.log(oBig);
-    oContent.onmouseover = function () {
+    oMask.onmouseover = function () {
 //        e = e || window.event;
         oGlass.style.display = 'block';
         oHidden.style.display = 'block';
 
     };
 
-    oContent.onmouseout = function () {
+    oMask.onmouseout = function () {
         oGlass.style.display = 'none';
         oHidden.style.display = 'none';
     };
 
-    oContent.onmousemove = function (e) {
+    oMask.onmousemove = function (e) {
         e = e || window.event;
         var left = e.clientX - (oGlass.offsetWidth / 2 ) - oContainer.offsetLeft;
         var top = e.clientY - (oGlass.offsetHeight / 2) - oContainer.offsetTop;
