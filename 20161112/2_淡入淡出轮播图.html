@@ -157,8 +157,14 @@
     timer = setInterval(function () {
         oNext.onclick();
     }, 3000);
-
-
+    oUl.onmouseover=function () {
+        clearInterval(timer);
+    };
+    oUl.onmouseout=function () {
+        timer = setInterval(function () {
+            oNext.onclick();
+        }, 1000);
+    }
 </script>
 </body>
 </html>
