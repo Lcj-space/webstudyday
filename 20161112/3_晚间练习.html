@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无缝轮播图</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #container {
+            margin: 100px auto;
+            background: gray;
+            width: 919px;
+            height: 345px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #tab {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            z-index: 2;
+        }
+
+        #tab .select {
+            background-color: aqua;
+        }
+
+        #tab li {
+            width: 30px;
+            height: 30px;
+            background: black;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 2px;
+            float: left;
+        }
+
+        #content {
+            position: absolute;
+            left: 0;
+        }
+
+        #content img {
+            width: 919px;
+            height: 345px;
+            float: left;
+
+        }
+
+        #btn {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+        }
+
+        #btn span {
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            background: black;
+            color: aliceblue;
+            float: left;
+            text-align: center;
+            margin-right: 2px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="tab">
+        <ul>
+            <li class="select">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <div id="content">
+        <img src="img/1.jpg" alt="">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+        <img src="img/4.jpg" alt="">
+    </div>
+    <div id="btn">
+        <span id="prev">&lt;</span>
+        <span id="next">&gt;</span>
+    </div>
+</div>
+<script src="jslib.js"></script>
+<script>
+    var oContainer = document.getElementById('container');
+    var oContent = document.getElementById('content');
+    var aImg = oContent.getElementsByTagName('img');
+    var oTab = document.getElementById('tab');
+    var aLi = oTab.getElementsByTagName('li');
+    var oPrev = document.getElementById('prev');
+    var oNext = document.getElementById('next');
+    var newImg = aImg[0].cloneNode();
+    var index = 0;
+    oContent.appendChild(newImg);
+    oContent.style.width = aImg[0].offsetWidth * aImg.length + 'px';
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].index = i;
+        aLi[i].onmouseover = function () {
+            changeImg(this.index);
+        }
+    }
+    function changeImg(index) {
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].className = '';
+        }
+        aLi[index == aImg.length - 1 ? 0 : index].className = 'select';
+        animate(oContent, {left: -aImg[0].offsetWidth * index})
+    }
+
+    oNext.onclick = function () {
+        index = ++index;
+        if (index == aImg.length) {
+            index = 1;
+            oContent.style.left = 0 + 'px';
+        }
+        changeImg(index);
+    };
+
+    oPrev.onclick = function () {
+        index--;
+        if (index == -1) {
+            index = aImg.length - 2;
+            oContent.style.left = -aImg[0].offsetWidth * (aImg.length - 1 ) + 'px';
+        }
+        changeImg(index);
+    };
+
+    timer = setInterval(function () {
+        oNext.onclick();
+    }, 1000);
+
+    oContainer.onmouseover = function () {
+      clearInterval(timer);
+    };
+
+    oContainer.onmouseout = function () {
+        timer = setInterval(function () {
+            oNext.onclick();
+        }, 2000);
+    };
+
+    document.onselectstart = function () {
+        return false;
+    }
+
+</script>
+</body>
+</html>
