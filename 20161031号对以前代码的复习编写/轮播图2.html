@@ -46,9 +46,11 @@
 
         #content {
             /*width: 919px;*/
+            height: 415px;
             position: absolute;
             left: 0;
-            transition: 0.5s;
+            top: 0;
+            /*transition: 0.5s;*/
         }
 
         #content img {
@@ -58,9 +60,9 @@
             /*display: none;*/
         }
 
-        #content .selected {
-            display: block;
-        }
+        /*#content .selected {*/
+        /*display: block;*/
+        /*}*/
 
         #btn {
             position: absolute;
@@ -91,7 +93,7 @@
         <li>4</li>
     </ul>
     <div id="content">
-        <img src="img/1.jpg" alt="" class="selected">
+        <img src="img/1.jpg" alt="">
         <img src="img/2.jpg" alt="">
         <img src="img/3.jpg" alt="">
         <img src="img/4.jpg" alt="">
@@ -101,6 +103,8 @@
         <span id="next">&gt;</span>
     </div>
 </div>
+
+<script src="jslib.js"></script>
 <script>
     var oContainer = document.getElementById('container');
     var aLi = oContainer.getElementsByTagName('li');
@@ -113,10 +117,9 @@
     //    alert(oContent.offsetWidth);
     for (var i = 0; i < aLi.length; i++) {
         aLi[i].index = i;
-
         aLi[i].onmouseover = function () {
-            index = this.index;
-            changeImg(index);
+//            index = this.index;
+            changeImg(this.index);
         }
     }
 
@@ -126,7 +129,9 @@
 //            aImg[i].className='';
         }
         aLi[index].className = 'selected';
-        oContent.style.left = -aImg[0].offsetWidth * index + 'px';
+        animate(oContent , {left:- aImg[0].offsetWidth * index });
+//        console.log(oContent.style.left + 'px');
+//        oContent.style.left = -aImg[0].offsetWidth * index + 'px';
 //        alert(index);
     }
 
