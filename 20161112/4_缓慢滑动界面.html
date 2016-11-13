@@ -14,53 +14,49 @@
         }
 
         #container {
+            position: relative;
             width: 800px;
             height: 500px;
-            /*background: gray;*/
+            background: gray;
             margin: 100px auto;
-            position: relative;
-            border: 1px gray dashed;
+            border: 1px solid black;
             overflow: hidden;
-
         }
 
         #content {
             width: 800px;
-            height: 450px;
+            height: 300px;;
             overflow: hidden;
-            /*background: blue;*/
             position: absolute;
         }
 
         #content li {
-            text-align: center;
-            line-height: 450px;
             width: 180px;
-            height: 450px;
+            height: 300px;
             background: black;
-            font-size: 50px;
-            color: white;
             float: left;
+            color: white;
+            font-size: 50px;
             margin-right: 20px;
+            text-align: center;
+            line-height: 300px;
         }
 
         #btn {
             position: absolute;
-            bottom: 10px;
-            left: 350px;
+            left: 337px;
+            bottom: 100px;
         }
 
         #btn span {
-            display: block;
             float: left;
-            margin-left: 2px;
-            color: white;
-            text-align: center;
-            line-height: 30px;
-            background: gray;
-            width: 50px;
+            width: 60px;
             height: 30px;
-            cursor: pointer;
+            background: black;
+            line-height: 30px;
+            text-align: center;
+            color: white;
+            margin-right: 6px;;
         }
     </style>
 </head>
@@ -80,31 +76,31 @@
     </div>
 </div>
 <script>
-    var oContent = document.getElementById('content');
+    var oContent=document.getElementById('content');
     var aUl = oContent.children;
+    var speed;
     var oPrev = document.getElementById('prev');
     var oNext = document.getElementById('next');
-    var speed = -2;
-    oContent.innerHTML += oContent.innerHTML;
-    oContent.style.width = (aUl[0].offsetWidth) * aUl.length + 'px';
-    console.log(oContent.offsetWidth);
+    oContent.innerHTML=oContent.innerHTML+oContent.innerHTML;
+    oContent.style.width=oContent.offsetWidth*aUl.length + 'px';
+    console.log(oContent.style.width);
     setInterval(function () {
-        oContent.style.left = oContent.offsetLeft + speed + 'px';
-        if (oContent.offsetLeft <= -oContent.offsetWidth / 2) {
-            oContent.style.left = 0 + 'px';
+        oContent.style.left = oContent.offsetLeft  +speed +'px';
+        if(oContent.offsetLeft <= - oContent.offsetWidth/2){
+            oContent.style.left =0 + 'px';
         }
+        if(oContent.offsetLeft >0){
+            oContent.style.left = - oContent.offsetWidth/2 + 'px';
+        }
+    },30);
 
-        if (oContent.offsetLeft > 0) {
-            oContent.style.left = -oContent.offsetWidth / 2 + 'px';
-        }
-    }, 30);
     oPrev.onmouseover = function () {
-        speed = -2;
+        speed = - 2;
     };
+
     oNext.onmouseover = function () {
         speed = 2;
-    }
-
+    };
 </script>
 </body>
 </html>
