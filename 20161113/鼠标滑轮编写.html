@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标滑轮编写</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #container {
+            width: 500px;
+            height: 300px;
+            background: gray;
+            margin: 100px auto;
+            position: relative;
+            /*overflow: hidden;*/
+        }
+
+        #content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 470px;
+            /*height: 100%;*/
+            /*background: cadetblue;*/
+            color: black;
+        }
+
+        #drgContent {
+            width: 30px;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: cornflowerblue;
+        }
+
+        #drg {
+            position: absolute;
+            top:0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            background: burlywood;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        11呵呵呵呵或和或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或呵呵呵呵或和或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或
+        呵呵呵呵或和或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或呵呵呵呵或和或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或
+        呵呵呵呵或和或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或呵呵呵呵或和或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或
+        呵呵呵呵或和或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或呵呵呵呵或和或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或
+        呵呵呵呵或和或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或呵呵呵呵或和或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或
+        呵呵呵呵或和或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或呵呵呵呵或和或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或
+        呵呵呵呵或和或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或呵呵呵呵或和或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或
+        啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊end1
+    </div>
+    <div id="drgContent">
+        <div id="drg"></div>
+    </div>
+</div>
+<script>
+    var oDrg = document.getElementById('drg');
+    var oDrgContent = document.getElementById('drgContent');
+    var oContent =  document.getElementById('content');
+    var oContainer = document.getElementById('container');
+    oDrg.onmousedown = function (e) {
+        e = e || window.event;
+        var Disy = e.clientY - oDrg.offsetTop;
+        document.onmousemove = function (e) {
+            e = e || window.event;
+            var top = e.clientY - Disy;
+            var a = oDrg.offsetTop /(oDrgContent.offsetHeight-oDrg.offsetHeight);
+
+            if (top < 0) {
+                top = 0 ;
+            }
+            if (top > oDrgContent.offsetHeight - oDrg.offsetHeight) {
+               top = oDrgContent.offsetHeight - oDrg.offsetHeight ;
+            }
+            oDrg.style.top = top + 'px';
+            oContent.style.top= - a * (oContent.offsetHeight-oContainer.offsetHeight) + 'px';
+            return false;
+        }
+    };
+
+</script>
+</body>
+</html>
