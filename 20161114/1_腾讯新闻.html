@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>腾讯新闻</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #container {
+            margin: 100px auto;
+            background: black;
+            width: 1000px;
+            height: 550px;
+            position: relative;
+        }
+
+        #tab {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            z-index: 999;
+        }
+
+        #tab .select {
+            background-color: white;
+            /*opacity: 10;*/
+
+        }
+
+        #tab li {
+            cursor: pointer;
+            list-style: none;
+            width: 75px;
+            height: 50px;
+            float: left;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        #tab li img {
+            width: 75px;
+            height: 50px;
+        }
+
+        #content {
+            position: absolute;
+            width: 1000px;
+            height: 550px;
+
+        }
+
+        #content img {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #next {
+            position: absolute;
+            right: 10px;
+            bottom: 40px;
+            width: 30px;
+            height: 50px;
+            display: block;
+            color: white;
+            font-size: 60px;
+            text-align: center;
+            line-height: 50px;
+            z-index: 999;
+            cursor: pointer;
+
+            /*background: yellow;*/
+        }
+
+        #prev {
+            position: absolute;
+            right: 525px;
+            bottom: 40px;
+            width: 30px;
+            height: 50px;
+            display: block;
+            color: white;
+            font-size: 60px;
+            text-align: center;
+            line-height: 50px;
+            z-index: 999;
+            cursor: pointer;
+
+            /*background: yellow;*/
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="tab">
+        <ul>
+            <li class="select"><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.jpg" alt=""></li>
+            <li><img src="img/3.jpg" alt=""></li>
+            <li><img src="img/4.jpg" alt=""></li>
+            <li><img src="img/5.jpg" alt=""></li>
+            <li><img src="img/6.jpg" alt=""></li>
+        </ul>
+    </div>
+    <div id="content">
+        <img src="img/1.jpg" alt="">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+        <img src="img/4.jpg" alt="">
+        <img src="img/5.jpg" alt="">
+        <img src="img/6.jpg" alt="">
+    </div>
+    <div id="btn">
+        <span id="prev">&lt;</span>
+        <span id="next">&gt;</span>
+    </div>
+</div>
+<script src="jslib.js"></script>
+<script>
+    var oContent = document.getElementById('content');
+    var oTab = document.getElementById('tab');
+    var aLi = oTab.getElementsByTagName('li');
+    var aImg = oContent.children;
+    var oPrev = document.getElementById('prev');
+    var oNext = document.getElementById('next');
+    var index = 0;
+    var zIndex =aImg.length;
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].index = i;
+        aImg[i].style.zIndex = aImg.length - i;
+        aLi[i].onmouseover = function () {
+            changeImg(this.index);
+        }
+    }
+
+    function changeImg(index) {
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].className = '';
+        }
+        aImg[index].style.opacity= 0;
+//        alert(index);
+        aLi[index].className = 'select';
+//        console.log(aLi[index].className);
+        aImg[index].style.zIndex = ++ zIndex;
+        animate(aImg[index],{opacity:100});
+    }
+
+    oNext.onclick =function () {
+        index = ++index%aLi.length;
+        changeImg(index);
+    };
+
+    oPrev.onclick =function () {
+        if(index ==0){
+            index = aImg.length -1;
+        }
+        else {
+            index --;
+        }
+        changeImg(index);
+    };
+
+    timer = setInterval(function () {
+        oNext.onclick();
+    },2000)
+
+
+</script>
+</body>
+</html>
