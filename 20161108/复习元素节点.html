@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .click{
+            width: 50px;
+            /*background: black;*/
+            /*color: white;*/
+        }
+        .click h3{
+            background: black;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            width: 50px;
+            height: 30px;
+        }
+        .click ul {
+            display: none;
+            text-align: center;
+            background: deepskyblue;
+            /*border-bottom: gray 1px dashed;*/
+        }
+        .click li{
+            text-align: center;
+            border-bottom: gray 1px dashed;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul id="content">
+        <li  class="click">
+            <h3>one</h3>
+            <ul class="menu">
+                <li>a</li>
+                <li>b</li>
+                <li>c</li>
+            </ul>
+        </li>
+        <li class="click">
+            <h3>two</h3>
+            <ul class="menu">
+                <li>b</li>
+                <li>c</li>
+                <li>a</li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+//        var oContent = document.getElementById('content');
+//        var aLi =oContent.children;
+//        var aUl = oContent.getElementsByTagName('ul');
+//        for(var i=0;i<aLi.length;i++){
+//            aLi[i].index = i;
+//            aLi[i].onclick=function () {
+//                if(aUl[this.index].style.display == 'block'){
+//                    aUl[this.index].style.display = 'none';
+//                }else {
+//                    aUl[this.index].style.display ='block';
+//                }
+//
+//            }
+//
+//        }
+
+//2---------------
+//        var aH3 = document.getElementsByTagName('h3');
+//        var oContent =document.getElementById('content');
+//        var aUl =oContent.getElementsByTagName('ul');
+//        for(var i=0;i<aH3.length;i++){
+//            aH3[i].index =i;
+//            aH3[i].onclick=function () {
+//                if (aUl[this.index].style.display == 'block'){
+//                    aUl[this.index].style.display = 'none';
+//                }else {aUl[this.index].style.display = 'block'}
+//            }
+//        }
+
+ // 3----------------------------------------------------------
+//        var aH3 = document.getElementsByTagName('h3');
+//        for(var i=0;i<aH3.length;i++){
+//            aH3[i].index = i;
+//            aH3[i].onclick=function () {
+//                next(this).style.display = 'block';
+//            }
+//        }
+//        function next(elem) {
+//            do{
+//                elem = elem.nextSibling;
+//            }while (elem && elem.nodeType !=1);
+//            return elem;
+//        }
+
+
+//4-------------------------------
+        var aH3 = document.getElementsByTagName('h3');
+        var oContent = document.getElementById('content');
+         var aUl = oContent.getElementsByTagName('ul');
+         for(var i=0;i<aH3.length;i++){
+             aH3.bshow = false;
+             aH3[i].index =i;
+             aH3[i].onclick = function () {
+                 if(this.bshow){
+                     aUl[this.index].style.display ='none';
+                 }else {
+                     aUl[this.index].style.display ='block';
+                 }
+                 this.bshow =!this.bshow;
+             }
+         }
+    </script>
+</div>
+</body>
+</html>
