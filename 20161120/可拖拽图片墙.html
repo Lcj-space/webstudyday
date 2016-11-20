@@ -22,7 +22,8 @@
             height: 150px;
             margin: 10px;
         }
-        #content img.collide{
+
+        #content img.collide {
             border: 1px solid red;
         }
     </style>
@@ -39,17 +40,19 @@
     <img src="images/8.jpg" alt="">
     <img src="images/9.jpg" alt="">
 </div>
+<script src="jslib.js"></script>
 <script>
     var oContent = document.getElementById('content');
     var aImg = oContent.getElementsByTagName('img');
     var zIndex = 1;
-    var arr=[];
+    var arr = [];
     var nearElem = null;
     for (var i = aImg.length - 1; i >= 0; i--) {
         aImg[i].style.left = aImg[i].offsetLeft + 'px';
         aImg[i].style.top = aImg[i].offsetTop + 'px';
         aImg[i].style.position = 'absolute';
         drag(aImg[i]);
+        aImg[i].style.margin = 0;
 
     }
     function drag(elem) {
@@ -58,13 +61,17 @@
             var iDix = e.clientX - elem.offsetLeft;
             var iDiy = e.clientY - elem.offsetTop;
             elem.style.zIndex = zIndex++;
+            elem.pos = {
+                left: elem.offsetLeft,
+                top: elem.offsetTop
+            };
             document.onmousemove = function (e) {
                 e = e || window.event;
                 var ileft = e.clientX - iDix;
                 var itop = e.clientY - iDiy;
                 elem.style.left = ileft + 'px';
                 elem.style.top = itop + 'px';
-                 arr = [];
+                arr = [];
 
                 for (var i = 0; i < aImg.length; i++) {
                     if (aImg[i] == elem) {
@@ -75,14 +82,15 @@
                     if (iscol) {
                         arr.push(aImg[i]);
                     }
-                    aImg[i].className ='';
+                    aImg[i].className = '';
+
                 }
 
-                if(arr.length>0){
+                if (arr.length > 0) {
 
-                    nearElem= nearnest(elem);
+                    nearElem = nearnest(elem);
                     nearElem.className = 'collide';
-                }else {
+                } else {
                     nearElem = null;
                 }
 
@@ -99,6 +107,17 @@
         elem.onmouseup = function () {
 //            elem.style.zIndex = zIndex--;
             document.onmousemove = null;
+            if (nearElem) {
+                animate(elem, {
+                    left: nearElem.offsetLeft,
+                    top: nearElem.offsetTop
+                });
+                animate(nearElem, elem.pos);
+                nearElem.className = '';
+                nearElem = null;
+            } else {
+                animate(elem, elem.pos);
+            }
         }
 
     }
@@ -123,16 +142,19 @@
     function nearnest(elem) {
         var minDis = 999999999;
         var index = -1;
-        for(var i=0;i<arr.length;i++){
+        for (var i = 0; i < arr.length; i++) {
             var x = elem.offsetLeft - arr[i].offsetLeft;
             var y = elem.offsetTop - arr[i].offsetTop;
-            var iDis =Math.sqrt(x*x + y*y);
-            if(iDis<minDis){
-                minDis =iDis;
+            var iDis = Math.sqrt(x * x + y * y);
+            if (iDis < minDis) {
+                minDis = iDis;
                 index = i;
             }
         }
         return arr[index];
+    }
+    document.onselectstart=function () {
+        return false;
     }
 </script>
 </body>
