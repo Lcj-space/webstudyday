@@ -101,24 +101,23 @@
 //                elem.style.zIndex = zIndex--;
 //                document.onmousemove = null;
 //            }
-
-        };
-
-        elem.onmouseup = function () {
+            document.onmouseup = function () {
 //            elem.style.zIndex = zIndex--;
-            document.onmousemove = null;
-            if (nearElem) {
-                animate(elem, {
-                    left: nearElem.offsetLeft,
-                    top: nearElem.offsetTop
-                });
-                animate(nearElem, elem.pos);
-                nearElem.className = '';
-                nearElem = null;
-            } else {
-                animate(elem, elem.pos);
+                document.onmousemove = null;
+                if (nearElem) {
+                    animate(elem, {
+                        left: nearElem.offsetLeft,
+                        top: nearElem.offsetTop
+                    });
+                    animate(nearElem, elem.pos);
+                    nearElem.className = '';
+                    nearElem = null;
+                } else {
+                    console.log( elem);
+                    animate(elem, elem.pos);
+                }
             }
-        }
+        };
 
     }
 
