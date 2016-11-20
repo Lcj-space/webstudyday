@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>可拖拽图片墙</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #content {
+            width: 660px;
+            height: 510px;
+            background: gray;
+            margin: 100px auto;
+        }
+
+        img {
+            float: left;
+            width: 200px;
+            height: 150px;
+            margin: 10px;
+        }
+        #content img.collide{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+    <img src="images/1.jpg" alt="">
+    <img src="images/2.jpg" alt="">
+    <img src="images/3.jpg" alt="">
+    <img src="images/4.jpg" alt="">
+    <img src="images/5.jpg" alt="">
+    <img src="images/6.jpg" alt="">
+    <img src="images/7.jpg" alt="">
+    <img src="images/8.jpg" alt="">
+    <img src="images/9.jpg" alt="">
+</div>
+<script>
+    var oContent = document.getElementById('content');
+    var aImg = oContent.getElementsByTagName('img');
+    var zIndex = 1;
+    var arr=[];
+    var nearElem = null;
+    for (var i = aImg.length - 1; i >= 0; i--) {
+        aImg[i].style.left = aImg[i].offsetLeft + 'px';
+        aImg[i].style.top = aImg[i].offsetTop + 'px';
+        aImg[i].style.position = 'absolute';
+        drag(aImg[i]);
+
+    }
+    function drag(elem) {
+        elem.onmousedown = function (e) {
+            e = e || window.event;
+            var iDix = e.clientX - elem.offsetLeft;
+            var iDiy = e.clientY - elem.offsetTop;
+            elem.style.zIndex = zIndex++;
+            document.onmousemove = function (e) {
+                e = e || window.event;
+                var ileft = e.clientX - iDix;
+                var itop = e.clientY - iDiy;
+                elem.style.left = ileft + 'px';
+                elem.style.top = itop + 'px';
+                 arr = [];
+
+                for (var i = 0; i < aImg.length; i++) {
+                    if (aImg[i] == elem) {
+                        continue;
+                    }
+//                    console.log(arr);
+                    var iscol = checkCollide(elem, aImg[i]);
+                    if (iscol) {
+                        arr.push(aImg[i]);
+                    }
+                    aImg[i].className ='';
+                }
+
+                if(arr.length>0){
+
+                    nearElem= nearnest(elem);
+                    nearElem.className = 'collide';
+                }else {
+                    nearElem = null;
+                }
+
+
+                return false;
+            };
+//            elem .onmouseup = function () {
+//                elem.style.zIndex = zIndex--;
+//                document.onmousemove = null;
+//            }
+
+        };
+
+        elem.onmouseup = function () {
+//            elem.style.zIndex = zIndex--;
+            document.onmousemove = null;
+        }
+
+    }
+
+    function checkCollide(elem, target) {
+        var Relem = elem.offsetLeft + elem.offsetWidth,
+                Lelem = elem.offsetLeft,
+                Telem = elem.offsetTop,
+                Belem = elem.offsetTop + elem.offsetHeight;
+        var Rtarget = target.offsetLeft + target.offsetWidth,
+                Ltarget = target.offsetLeft,
+                Ttarget = target.offsetTop,
+                Btarget = target.offsetTop + target.offsetHeight;
+        if (Relem < Ltarget || Lelem > Rtarget || Telem > Btarget || Belem < Ttarget) {
+            return false;
+        } else {
+            return true;
+
+        }
+    }
+
+    function nearnest(elem) {
+        var minDis = 999999999;
+        var index = -1;
+        for(var i=0;i<arr.length;i++){
+            var x = elem.offsetLeft - arr[i].offsetLeft;
+            var y = elem.offsetTop - arr[i].offsetTop;
+            var iDis =Math.sqrt(x*x + y*y);
+            if(iDis<minDis){
+                minDis =iDis;
+                index = i;
+            }
+        }
+        return arr[index];
+    }
+</script>
+</body>
+</html>
