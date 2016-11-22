@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分割字符串</title>
+</head>
+<body>
+<h2>实现输入aaabbbcccddzzz输出abcdz</h2>
+<script>
+    var arr = prompt('输入相同的字符串', 'aaaabbbbccczzz');
+    //        console.log(typeof arr);
+    for (var i = 0; i < arr.length; i++) {
+        if (arr.charAt(i)!=arr.charAt(i+1)){
+            document.write(arr.charAt(i));
+        }
+    }
+</script>
+</body>
+</html>
