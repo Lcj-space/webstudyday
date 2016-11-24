@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闰年的编写</title>
+</head>
+<body>
+<script>
+    window.onload = (function () {
+        var today = new Date();
+        var year = today.getFullYear();
+        console.log(year);
+        var x = year;
+//       var x = prompt(x);
+        console.log(x);
+        if(x%4==0 && x%100!=0 || x%400==0){
+            document.write(x + '这是闰年');
+        }else {
+            document.write(x + '不是闰年');
+        }
+    })();
+</script>
+</body>
+</html>
