@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var a;
+    alert(a);//a没有赋值显示undefined
+    alert(typeof a);//所以a的类型也会显示undefined
+    var c = null;
+    alert(typeof c);//C的值被赋值为null所以其类型变成了object
+    alert(a==c);//在值上undefined和null的值是相等的所以显示TRUE
+    alert(a===c);//在类型上他们是不会全等的所以显示false
+
+</script>
+</body>
+</html>

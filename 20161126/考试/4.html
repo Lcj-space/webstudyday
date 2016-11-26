@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var a,b;
+    (function(){
+        console.log(a);//a和b的值为undefined是应为a b没有赋值凡是进行了定义
+        console.log(b);
+        var a=b=3;
+        console.log(a);//a和b的值为3 是应为在这个局部函数中对 a ,b进行了赋值
+        console.log(b);
+    })();
+    console.log(a);
+    console.log(b);//a为undefined是因为在函数中对b进行了赋值a只是取到了b的一个映像而b是进行了赋值所以b为3
+    //结果显示为
+//    undefined
+//     undefined
+//     3
+//     3
+//     undefined
+//     3
+    document.write(11/10);
+</script>
+
+</body>
+</html>

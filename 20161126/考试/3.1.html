@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function test(n,m) {
+        var arr=[];
+        for(var i=n;i<=m;i++){
+            var str = i.toString().split("").reverse().join("");
+            if(i ==str){
+                arr.push(i);
+            }
+        }
+        console.log(arr);
+    }
+    test(100,1000);
+    //1.	定一个函数test(n,m)  n>1,m>n,返回n到m之间的所有回文数。
+    // （回文数是正读和反读相同的数，例如 121，1001,…）。
+//    window.onload= (function () {
+//        (function test(n,m) {
+//            var arr=[];
+//               for(var i=1;i<9999;i++){
+//                    arr=[];
+//                   if(i/1%10 ==i / 10 % 10||i / 100 % 10==i/1%10 ||i / 1000 % 10==i/1%10&&i / 100 % 10==i / 10 % 10)
+//                   {arr.push(i);}
+//                       document.write(arr);
+////                       document.write('</br>');
+//               }
+//         alert(arr.length);
+//        })();
+//
+//
+//    })();
+</script>
+
+</body>
+</html>

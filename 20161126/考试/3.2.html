@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = 'hello is the world d';
+    var arr = str.split(" ");
+    var Min = arr[0];
+    var Max = arr[0];
+    var MinLength = arr[0].length;
+    var MaxLength = arr[0].length;
+    for(var i =1;i<arr.length;i++){
+        if(arr[i].length<MinLength){
+            Min = arr[i];
+            MinLength = arr[i].length;
+        }else {
+            Max =arr[i] ;
+            MaxLength = arr[i].length;
+        }
+    }
+    console.log(Max,MaxLength,Min,MinLength)
+//    document.write(Min);
+//    document.write(Min.length);
+//    document.write(Max);
+//    document.write(MaxLength);
+
+    //	有一行单词，空格为单词间的间隔，找出其中最长的单词和最短的单词
+//    window.onload=(function () {
+//        var word = prompt(a);
+//        for(i=0;i<word.length;i++){
+//            if(Charat[i]==''){
+//            }
+//        }
+//    })();
+</script>
+</body>
+</html>
