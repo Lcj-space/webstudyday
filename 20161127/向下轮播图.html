@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            /*background: gray;*/
+        }
+
+        body {
+            background: gray;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #container {
+            width: 400px;
+            height: 434px;
+            margin: 100px auto;
+            overflow: hidden;
+            background: blanchedalmond;
+        }
+
+        #content {
+            width: 400px;
+            height: 320px;
+            /*overflow: hidden;*/
+            position: relative;
+        }
+
+        /*#big-pic {*/
+        /*width: 400px;*/
+        /*height: 320px;*/
+        /*position: absolute;*/
+        /*}*/
+
+        #big-pic li {
+            width: 400px;
+            height: 320px;
+            overflow: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #left, #right {
+            width: 200px;
+            height: 320px;
+            position: absolute;
+            /*background: gray;*/
+            z-index: 9999;
+            opacity: 0;
+            /*float: left;*/
+
+        }
+
+        #left {
+            left: 0;
+        }
+
+        #right {
+            right: 0;
+        }
+
+        #left-btn {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            left: 0;
+            top: 130px;
+            background: url("img/btn.gif");
+        }
+
+        #right-btn {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            right: 0;
+            top: 130px;
+            background: url("img/btn.gif") 0 -60px;
+        }
+
+        #text {
+            width: 400px;
+            height: 30px;
+            z-index: 9998;
+            line-height: 30px;
+            background: gray;
+            opacity: 0.6;
+            position: absolute;
+            bottom: 0;
+        }
+
+        #left-text {
+            float: left;
+            margin-left: 10px;
+        }
+
+        #num {
+            float: right;
+            margin-right: 10px;
+        }
+
+        #sml-pic {
+            width: 780px;
+            position: relative;
+
+        }
+
+        #sml-pic li {
+            width: 120px;
+            height: 94px;
+            margin: 10px 0 10px 10px;
+            float: left;
+            opacity: 0.6;
+        }
+
+        #sml-pic img {
+            width: 120px;
+            height: 94px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <div id="big-pic">
+            <ul>
+                <li style="z-index: 1"><img src="img/1.jpg" alt=""></li>
+                <li><img src="img/2.jpg" alt=""></li>
+                <li><img src="img/3.jpg" alt=""></li>
+                <li><img src="img/4.jpg" alt=""></li>
+                <li><img src="img/5.jpg" alt=""></li>
+                <li><img src="img/6.jpg" alt=""></li>
+            </ul>
+        </div>
+
+        <div id="left">
+            <span id="left-btn"></span>
+        </div>
+        <div id="right">
+            <span id="right-btn"></span>
+        </div>
+        <div id="text">
+            <span id="left-text">123456</span>
+            <span id="num">1</span>/<span>6</span>
+            <!--<span id="num"><span>1</span>/<span>6</span></span>-->
+        </div>
+    </div>
+    <div id="sml-pic">
+        <ul>
+            <li style="opacity: 1"><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.jpg" alt=""></li>
+            <li><img src="img/3.jpg" alt=""></li>
+            <li><img src="img/4.jpg" alt=""></li>
+            <li><img src="img/5.jpg" alt=""></li>
+            <li><img src="img/6.jpg" alt=""></li>
+        </ul>
+    </div>
+</div>
+<script src="jslib.js"></script>
+<script>
+    var oContainer = document.getElementById('container');
+    var oSmlPic = document.getElementById('sml-pic');
+    var aSmlpic = oSmlPic.getElementsByTagName('li');
+    var oBigpic = document.getElementById('big-pic');
+    var aBigpic = oBigpic.getElementsByTagName('li');
+    var oRbtn = document.getElementById('right-btn');
+    var oRight = document.getElementById('right');
+    var oLbtn = document.getElementById('left-btn');
+    var oLeft = document.getElementById('left');
+    var oNum = document.getElementById('num');
+    var iNow = 0;
+    var zIndex = 1;
+    //    var timer = null;
+    oRight.onmouseover = oLeft.onmouseover = function () {
+//        this.style.opacity = '1';
+        animate(this, {opacity: 100})
+    };
+    oRight.onmouseout = oLeft.onmouseout = function () {
+//        this.style.opacity = '0';
+        animate(this, {opacity: 0})
+    };
+
+    oRbtn.onclick = oLbtn.onclick = function () {
+        if (this == oRbtn) {
+            iNow = ++iNow % aBigpic.length;
+        } else {
+            iNow--;
+            if (iNow == -1) {
+                iNow = aBigpic.length - 1;
+            }
+        }
+        changeImg(iNow);
+    };
+
+    function changeImg(index) {
+        aBigpic[index].style.zIndex = zIndex++;
+        aBigpic[index].style.height = 0;
+        animate(aBigpic[index], {height: 320});
+        for (var i = 0; i < aSmlpic.length; i++) {
+            aSmlpic[i].style.opacity = 0.6;
+        }
+        aSmlpic[index].style.opacity = 1;
+        oNum.innerHTML = iNow + 1;
+        iNow = index;
+        if (index == 0) {
+            animate(oSmlPic, {left: 0})
+        } else if (index == aSmlpic.length - 1) {
+            animate(oSmlPic, {left: -(index - 2) * (aSmlpic[0].offsetWidth + 10)})
+        } else {
+            animate(oSmlPic, {left: -(index - 1) * (aSmlpic[0].offsetWidth + 10)})
+        }
+    }
+
+    for (var i = 0; i < aSmlpic.length; i++) {
+        aSmlpic[i].index = i;
+
+        aSmlpic[i].onmouseover = function () {
+            animate(this, {opacity: 100})
+        };
+
+        aSmlpic[i].onmouseout = function () {
+            if (this.index != iNow) {
+                animate(this, {opacity: 60})
+            }
+        };
+
+        aSmlpic[i].onclick = function () {
+            changeImg(this.index);
+        }
+    }
+    function run() {
+        timer = setInterval(function () {
+            oRbtn.onclick();
+        }, 1000);
+    }
+    run();
+
+    oContainer.onmouseover = function () {
+        clearInterval(timer);
+    };
+
+    oContainer.onmouseout = function () {
+        run();
+    }
+</script>
+</body>
+</html>
