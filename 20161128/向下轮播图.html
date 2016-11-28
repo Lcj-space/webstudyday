@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>向下轮播图</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #container {
+            margin: 100px auto;
+            background: gray;
+            width: 400px;
+            height: 434px;
+            overflow: hidden;
+
+        }
+
+        #content {
+            width: 400px;
+            height: 320px;
+            background: blanchedalmond;
+            position: relative;
+        }
+
+        /*#bigpic {*/
+            /*width: 400px;*/
+            /*height: 320px;*/
+            /*position: absolute;*/
+        /*}*/
+
+        #bigpic li {
+            width: 400px;
+            height: 320px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #left, #right {
+            /*float: left;*/
+            /*为什么浮动取不到这个元素*/
+            /*z-index: 必须进行定位才能取到不然是会失效;*/
+            /*position: absolute;*/
+            width: 200px;
+            height: 320px;
+            background: black;
+            /*opacity: 1;*/
+            z-index: 999999;
+        }
+        /*#left{*/
+            /*left: 0;*/
+        /*}*/
+        /*#right{*/
+            /*right: 0;*/
+        /*}*/
+        #left-btn {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            left: 0;
+            top: 130px;
+            background: url("img/btn.gif") 0 0;
+            z-index: 9999;
+        }
+
+        #right-btn {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            right: 0;
+            top: 130px;
+            background: url("img/btn.gif") 0 -60px;
+            z-index: 9999;
+        }
+
+        #text {
+            width: 400px;
+            height: 30px;
+            background: black;
+            line-height: 30px;
+            position: absolute;
+            bottom: 0;
+            opacity: 0.6;
+            color: #dddddd;
+            z-index: 9998;
+        }
+
+        #text-left, #text-right {
+            position: absolute;
+            height: 30px;
+        }
+
+        #text-right {
+            right: 10px;
+        }
+
+        #text-left {
+            left: 10px;
+        }
+
+        #smallpic {
+            width: 780px;
+        }
+
+        #smallpic li {
+            width: 120px;
+            height: 94px;
+            margin: 10px 0 10px 10px;
+            float: left;
+            opacity: 0.6;
+        }
+
+        #smallpic img {
+            width: 120px;
+            height: 94px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <div id="bigpic">
+            <ul>
+                <!--<li style="z-index: 1"><img src="img/1.jpg" alt=""></li>-->
+                <!--<li><img src="img/2.jpg" alt=""></li>-->
+                <!--<li><img src="img/3.jpg" alt=""></li>-->
+                <!--<li><img src="img/4.jpg" alt=""></li>-->
+                <!--<li><img src="img/5.jpg" alt=""></li>-->
+                <!--<li><img src="img/6.jpg" alt=""></li>-->
+            </ul>
+        </div>
+
+        <div id="left">
+            <span id="left-btn"></span>
+        </div>
+        <div id="right">
+            <span id="right-btn"></span>
+        </div>
+        <div id="text">
+            <span id="text-left">1222</span>
+            <span id="text-right">1<span>/</span>6</span>
+        </div>
+    </div>
+    <div id="smallpic">
+        <ul>
+            <li style="opacity: 1"><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.jpg" alt=""></li>
+            <li><img src="img/3.jpg" alt=""></li>
+            <li><img src="img/4.jpg" alt=""></li>
+            <li><img src="img/5.jpg" alt=""></li>
+            <li><img src="img/6.jpg" alt=""></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    var oLeft = document.getElementById('left');
+    var oRight = document.getElementById('right');
+    var oContainer = document.getElementById('container');
+    oLeft.onmouseover = oRight.onmouseover =function () {
+      this.style.opacity='1';
+//        alert('1');
+    };
+    oLeft.onmouseout = oRight.onmouseout =function () {
+        this.style.opacity='0';
+    }
+    oContainer.onmouseover =function (e) {
+     alert(e.target.innerHTML);
+    }
+</script>
+</body>
+</html>
