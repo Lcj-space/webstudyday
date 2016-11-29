@@ -130,12 +130,12 @@
     <div id="content">
         <div id="bigpic">
             <ul>
-                <li style="z-index: 1"><img src="img/1.jpg" alt=""></li>
-                <li><img src="img/2.jpg" alt=""></li>
-                <li><img src="img/3.jpg" alt=""></li>
-                <li><img src="img/4.jpg" alt=""></li>
-                <li><img src="img/5.jpg" alt=""></li>
-                <li><img src="img/6.jpg" alt=""></li>
+                <li   style="z-index: 1"><img src="img/1.jpg" alt="" title="111"></li>
+                <li ><img src="img/2.jpg" alt="" title="222"></li>
+                <li ><img src="img/3.jpg" alt="" title="333"></li>
+                <li ><img src="img/4.jpg" alt="" title="444"></li>
+                <li ><img src="img/5.jpg" alt="" title="5555"></li>
+                <li ><img src="img/6.jpg" alt="" title="666"></li>
             </ul>
         </div>
 
@@ -172,6 +172,7 @@
     var oContainer = document.getElementById('container');
     var oLefBtn = document.getElementById('left-btn');
     var oRightBtn = document.getElementById('right-btn');
+    var oTextLeft = document.getElementById('text-left');
     var iNow =0;
     var zIdex = 1;
 
@@ -200,6 +201,9 @@
 //        aBigPic[index].style.height =aBigPic[0].offsetHeight + 'px';
 //        animate(aBigPic[index],{opacity:100});
         animate(aBigPic[index],{height:330});
+        //为甚getAttribute('title')取不到值呢
+        oTextLeft.innerHTML = aBigPic[index].getAttribute('title');
+        alert(oTextLeft.innerHTML);
         for (i=0;i<aSmallPic.length;i++){
             aSmallPic[i].style.opacity = 0.6;
         }
