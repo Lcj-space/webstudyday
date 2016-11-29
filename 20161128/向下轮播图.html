@@ -128,12 +128,12 @@
     <div id="content">
         <div id="bigpic">
             <ul>
-                <!--<li style="z-index: 1"><img src="img/1.jpg" alt=""></li>-->
-                <!--<li><img src="img/2.jpg" alt=""></li>-->
-                <!--<li><img src="img/3.jpg" alt=""></li>-->
-                <!--<li><img src="img/4.jpg" alt=""></li>-->
-                <!--<li><img src="img/5.jpg" alt=""></li>-->
-                <!--<li><img src="img/6.jpg" alt=""></li>-->
+                <li style="z-index: 1"><img src="img/1.jpg" alt=""></li>
+                <li><img src="img/2.jpg" alt=""></li>
+                <li><img src="img/3.jpg" alt=""></li>
+                <li><img src="img/4.jpg" alt=""></li>
+                <li><img src="img/5.jpg" alt=""></li>
+                <li><img src="img/6.jpg" alt=""></li>
             </ul>
         </div>
 
@@ -161,19 +161,33 @@
 </div>
 
 <script>
+    var oBigPic = document.getElementById('bigpic');
+    var aBigPic = oBigPic.getElementsByTagName('li');
     var oLeft = document.getElementById('left');
     var oRight = document.getElementById('right');
     var oContainer = document.getElementById('container');
+    var oLefBtn = document.getElementById('left-btn');
+    var oRightBtn = document.getElementById('right-btn');
+    var iNow =0;
+
+    oLefBtn.onclick = oRightBtn =function () {
+        if(this == oLefBtn){
+                iNow--;
+            if(iNow==-1){
+                iNow = aBigPic.length -1;
+            }
+        }else {
+            iNow = iNow%aBigPic.length;
+        }
+        changeImg(iNow);
+    };
     oLeft.onmouseover = oRight.onmouseover =function () {
       this.style.opacity='1';
-//        alert('1');
     };
     oLeft.onmouseout = oRight.onmouseout =function () {
         this.style.opacity='0';
     }
-    oContainer.onmouseover =function (e) {
-     alert(e.target.innerHTML);
-    }
+
 </script>
 </body>
 </html>
