@@ -47,19 +47,19 @@
             /*float: left;*/
             /*为什么浮动取不到这个元素*/
             /*z-index: 必须进行定位才能取到不然是会失效;*/
-            /*position: absolute;*/
+            position: absolute;
             width: 200px;
             height: 320px;
-            background: black;
-            /*opacity: 1;*/
+            /*background: black;*/
+            opacity: 0;
             z-index: 999999;
         }
-        /*#left{*/
-            /*left: 0;*/
-        /*}*/
-        /*#right{*/
-            /*right: 0;*/
-        /*}*/
+        #left{
+            left: 0;
+        }
+        #right{
+            right: 0;
+        }
         #left-btn {
             width: 60px;
             height: 60px;
@@ -159,7 +159,7 @@
         </ul>
     </div>
 </div>
-
+<script src="jslib.js"></script>
 <script>
     var oBigPic = document.getElementById('bigpic');
     var aBigPic = oBigPic.getElementsByTagName('li');
@@ -169,15 +169,16 @@
     var oLefBtn = document.getElementById('left-btn');
     var oRightBtn = document.getElementById('right-btn');
     var iNow =0;
+    var zIdex = 1;
 
-    oLefBtn.onclick = oRightBtn =function () {
+    oLefBtn.onclick = oRightBtn.onclick =function () {
         if(this == oLefBtn){
                 iNow--;
             if(iNow==-1){
                 iNow = aBigPic.length -1;
             }
         }else {
-            iNow = iNow%aBigPic.length;
+            iNow = ++iNow%aBigPic.length;
         }
         changeImg(iNow);
     };
@@ -186,8 +187,13 @@
     };
     oLeft.onmouseout = oRight.onmouseout =function () {
         this.style.opacity='0';
-    }
+    };
 
+    function changeImg(index) {
+      aBigPic[index].style.opacity = 0;
+        aBigPic[index].style.zIndex = zIdex++;
+        animate(aBigPic[index],{opacity:100});
+    }
 </script>
 </body>
 </html>
