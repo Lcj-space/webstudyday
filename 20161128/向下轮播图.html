@@ -30,9 +30,9 @@
         }
 
         /*#bigpic {*/
-            /*width: 400px;*/
-            /*height: 320px;*/
-            /*position: absolute;*/
+        /*width: 400px;*/
+        /*height: 320px;*/
+        /*position: absolute;*/
         /*}*/
 
         #bigpic li {
@@ -55,12 +55,15 @@
             opacity: 0;
             z-index: 999999;
         }
-        #left{
+
+        #left {
             left: 0;
         }
-        #right{
+
+        #right {
             right: 0;
         }
+
         #left-btn {
             width: 60px;
             height: 60px;
@@ -108,7 +111,7 @@
 
         #smallpic {
             width: 780px;
-            position:relative;
+            position: relative;
         }
 
         #smallpic li {
@@ -130,12 +133,12 @@
     <div id="content">
         <div id="bigpic">
             <ul>
-                <li   style="z-index: 1"><img src="img/1.jpg" alt="" title="111"></li>
-                <li ><img src="img/2.jpg" alt="" title="222"></li>
-                <li ><img src="img/3.jpg" alt="" title="333"></li>
-                <li ><img src="img/4.jpg" alt="" title="444"></li>
-                <li ><img src="img/5.jpg" alt="" title="5555"></li>
-                <li ><img src="img/6.jpg" alt="" title="666"></li>
+                <li style="z-index: 1"><img src="img/1.jpg" alt="" title="111"></li>
+                <li><img src="img/2.jpg" alt="" title="222"></li>
+                <li><img src="img/3.jpg" alt="" title="333"></li>
+                <li><img src="img/4.jpg" alt="" title="444"></li>
+                <li><img src="img/5.jpg" alt="" title="5555"></li>
+                <li><img src="img/6.jpg" alt="" title="666"></li>
             </ul>
         </div>
 
@@ -163,75 +166,92 @@
 </div>
 <script src="jslib.js"></script>
 <script>
-    var oSmallPic = document.getElementById('smallpic');
-    var aSmallPic = oSmallPic.getElementsByTagName('li');
-    var oBigPic = document.getElementById('bigpic');
-    var aBigPic = oBigPic.getElementsByTagName('li');
-    var oLeft = document.getElementById('left');
-    var oRight = document.getElementById('right');
-    var oContainer = document.getElementById('container');
-    var oLefBtn = document.getElementById('left-btn');
-    var oRightBtn = document.getElementById('right-btn');
-    var oTextLeft = document.getElementById('text-left');
-    var iNow =0;
-    var zIdex = 1;
+    window.onload = function () {
+        var oSmallPic = document.getElementById('smallpic');
+        var aSmallPic = oSmallPic.getElementsByTagName('li');
+        var oBigPic = document.getElementById('bigpic');
+        var aBigPic = oBigPic.getElementsByTagName('li');
+        var oLeft = document.getElementById('left');
+        var oRight = document.getElementById('right');
+        var oContainer = document.getElementById('container');
+        var oLefBtn = document.getElementById('left-btn');
+        var oRightBtn = document.getElementById('right-btn');
+        var oTextLeft = document.getElementById('text-left');
+        var iNow = 0;
+        var zIdex = 1;
 
-    oLefBtn.onclick = oRightBtn.onclick =function () {
-        if(this == oLefBtn){
+        oLefBtn.onclick = oRightBtn.onclick = function () {
+            if (this == oLefBtn) {
                 iNow--;
-            if(iNow==-1){
-                iNow = aBigPic.length -1;
+                if (iNow == -1) {
+                    iNow = aBigPic.length - 1;
+                }
+            } else {
+                iNow = ++iNow % aBigPic.length;
             }
-        }else {
-            iNow = ++iNow%aBigPic.length;
-        }
-        changeImg(iNow);
-    };
-    oLeft.onmouseover = oRight.onmouseover =function () {
-      this.style.opacity='1';
-    };
-    oLeft.onmouseout = oRight.onmouseout =function () {
-        this.style.opacity='0';
-    };
+            changeImg(iNow);
+        };
+        oLeft.onmouseover = oRight.onmouseover = function () {
+            this.style.opacity = '1';
+        };
+        oLeft.onmouseout = oRight.onmouseout = function () {
+            this.style.opacity = '0';
+        };
 
-    function changeImg(index) {
-        aBigPic[index].style.height =0;
-        console.log(aBigPic[index].style.height);
-        aBigPic[index].style.zIndex = zIdex++;
+        function changeImg(index) {
+            aBigPic[index].style.height = 0;
+//            console.log(aBigPic[index].style.height);
+            aBigPic[index].style.zIndex = zIdex++;
 //        aBigPic[index].style.height =aBigPic[0].offsetHeight + 'px';
 //        animate(aBigPic[index],{opacity:100});
-        animate(aBigPic[index],{height:330});
-        //为甚getAttribute('title')取不到值呢
-        oTextLeft.innerHTML = aBigPic[index].getAttribute('title');
-        alert(oTextLeft.innerHTML);
-        for (i=0;i<aSmallPic.length;i++){
-            aSmallPic[i].style.opacity = 0.6;
-        }
-        aSmallPic[index].style.opacity = 1;
-        if(index==0){
-            animate(oSmallPic,{left:0})
-        }else if(index==aSmallPic.length-1){
-            animate(oSmallPic,{left:-(index-2)*(aSmallPic[0].offsetWidth+10)})
-        }else {
-            animate(oSmallPic,{left:-(index-1)*(aSmallPic[0].offsetWidth +10)})
-        }
-    }
-
-    for(var i =0;i<aSmallPic.length;i++){
-        aSmallPic[i].index = i;
-        aSmallPic[i].onmouseover = function () {
-            this.style.opacity = 1;
-        };
-        aSmallPic[i].onmouseout = function () {
-            if(this.index!=iNow){
-                this.style.opacity =0.6;
-
+            animate(aBigPic[index], {height: 330});
+            //为甚getAttribute('title')取不到值呢
+            oTextLeft.innerHTML = aBigPic[index].getAttribute('title');
+//        alert(oTextLeft.innerHTML);
+            for (i = 0; i < aSmallPic.length; i++) {
+                aSmallPic[i].style.opacity = 0.6;
             }
-        };
-        aSmallPic[i].onclick =function () {
-            changeImg(this.index);
+            aSmallPic[index].style.opacity = 1;
+            if (index == 0) {
+                animate(oSmallPic, {left: 0})
+            } else if (index == aSmallPic.length - 1) {
+                animate(oSmallPic, {left: -(index - 2) * (aSmallPic[0].offsetWidth + 10)})
+            } else {
+                animate(oSmallPic, {left: -(index - 1) * (aSmallPic[0].offsetWidth + 10)})
+            }
         }
-    }
+
+        for (var i = 0; i < aSmallPic.length; i++) {
+            aSmallPic[i].index = i;
+            aSmallPic[i].onmouseover = function () {
+                this.style.opacity = 1;
+            };
+            aSmallPic[i].onmouseout = function () {
+                if (this.index != iNow) {
+                    this.style.opacity = 0.6;
+
+                }
+            };
+            aSmallPic[i].onclick = function () {
+                changeImg(this.index);
+            }
+        }
+
+        function run() {
+            timer = setInterval(function () {
+                oRightBtn.onclick();
+            }, 1000)
+        };
+        run();
+
+        oContainer.onmouseover = function () {
+            clearInterval(timer);
+        }
+        oContainer.onmouseout = function () {
+            run();
+        }
+    };
+
 </script>
 </body>
 </html>
