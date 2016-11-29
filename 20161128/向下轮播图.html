@@ -108,6 +108,7 @@
 
         #smallpic {
             width: 780px;
+            position:relative;
         }
 
         #smallpic li {
@@ -162,6 +163,8 @@
 </div>
 <script src="jslib.js"></script>
 <script>
+    var oSmallPic = document.getElementById('smallpic');
+    var aSmallPic = oSmallPic.getElementsByTagName('li');
     var oBigPic = document.getElementById('bigpic');
     var aBigPic = oBigPic.getElementsByTagName('li');
     var oLeft = document.getElementById('left');
@@ -191,13 +194,39 @@
     };
 
     function changeImg(index) {
-//      aBigPic[index].style.opacity = 0;
         aBigPic[index].style.height =0;
         console.log(aBigPic[index].style.height);
         aBigPic[index].style.zIndex = zIdex++;
 //        aBigPic[index].style.height =aBigPic[0].offsetHeight + 'px';
 //        animate(aBigPic[index],{opacity:100});
         animate(aBigPic[index],{height:330});
+        for (i=0;i<aSmallPic.length;i++){
+            aSmallPic[i].style.opacity = 0.6;
+        }
+        aSmallPic[index].style.opacity = 1;
+        if(index==0){
+            animate(oSmallPic,{left:0})
+        }else if(index==aSmallPic.length-1){
+            animate(oSmallPic,{left:-(index-2)*(aSmallPic[0].offsetWidth+10)})
+        }else {
+            animate(oSmallPic,{left:-(index-1)*(aSmallPic[0].offsetWidth +10)})
+        }
+    }
+
+    for(var i =0;i<aSmallPic.length;i++){
+        aSmallPic[i].index = i;
+        aSmallPic[i].onmouseover = function () {
+            this.style.opacity = 1;
+        };
+        aSmallPic[i].onmouseout = function () {
+            if(this.index!=iNow){
+                this.style.opacity =0.6;
+
+            }
+        };
+        aSmallPic[i].onclick =function () {
+            changeImg(this.index);
+        }
     }
 </script>
 </body>
