@@ -38,6 +38,7 @@
         #bigpic li {
             width: 400px;
             height: 320px;
+            overflow: hidden;
             position: absolute;
             left: 0;
             top: 0;
@@ -190,9 +191,13 @@
     };
 
     function changeImg(index) {
-      aBigPic[index].style.opacity = 0;
+//      aBigPic[index].style.opacity = 0;
+        aBigPic[index].style.height =0;
+        console.log(aBigPic[index].style.height);
         aBigPic[index].style.zIndex = zIdex++;
-        animate(aBigPic[index],{opacity:100});
+//        aBigPic[index].style.height =aBigPic[0].offsetHeight + 'px';
+//        animate(aBigPic[index],{opacity:100});
+        animate(aBigPic[index],{height:330});
     }
 </script>
 </body>
