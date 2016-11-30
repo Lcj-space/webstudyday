@@ -102,24 +102,29 @@
     var oNext = document.getElementById('next');
     var aImg = oContent.children;
     var a = 0;
-    //    var index = 0;
-    //    for (var i = 0; i < aLi.length; i++) {
-    //        aLi[i].index = i;
-    //        aLi[i].onmouseover = function () {
-    //            for (var i = 0; i < aLi.length; i++) {
-    //                aLi[i].className = '';
-    //                aImg[i].className = '';
-    //            }
-    //            this.className = 'selected';
-    //            aImg[this.index].className = 'selected';
-    //        }
-    //    }
-    ////    for (var i = 0; i < aLi.length; i++) {
-    ////        aLi[i].index = i;
-    //        oNext.onclick = function () {
-    //            aLi[i].onmouseover();
-    //        };
-    ////    }
+        var index = 0;
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].index = i;
+            aLi[i].onmouseover = function () {
+                for (var i = 0; i < aLi.length; i++) {
+                    aLi[i].className = '';
+                    aImg[i].className = '';
+                }
+                this.className = 'selected';
+                aImg[this.index].className = 'selected';
+            }
+        }
+//        for ( i = 0; i < aLi.length; i++) {
+//            aLi[i].index = i;
+//            oNext.onclick = function () {
+//                for(i=0;i<aLi.length;i++){
+//                     aLi[i].index =i;
+//                }
+//                aLi[this].onmouseover();
+//
+//            };
+//        }
+
     for (var i = 0; i < aLi.length; i++) {
         aLi[i].index = i;
         aLi[i].onmouseover = function () {
