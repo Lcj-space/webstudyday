@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>五环</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .circle, .circle::after {
+            width: 200px;
+            height: 200px;
+            border: 10px solid;
+            border-radius: 50%;
+            position: relative;
+        }
+        .circle::after{
+            content: '';
+            display: block;
+            position: relative;
+            left: -10px;
+            top: -10px;
+        }
+        .blue {
+            border-color: blue;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .blue::after{
+            z-index: 1;
+            border-color: blue;
+            border-bottom-color: transparent;
+
+        }
+        .yellow {
+            border-color: yellow;
+            position: absolute;
+            left: 230px;
+            top: 0;
+        }
+        .yellow::after{
+            z-index: 1;
+            border-color: yellow;
+            border-left-color: transparent;
+        }
+        .red {
+            border-color: red;
+            position: absolute;
+            left: 460px;
+            top: 0;
+        }
+        .red::after{
+            z-index: 1;
+            border-color: red;
+            border-left-color: transparent;
+        }
+        .green {
+            border-color: green;
+            position: absolute;
+            left: 115px;
+            top: 110px;
+        }
+        .green::after{
+            border-color: green;
+            border-left-color: transparent;
+        }
+        .black {
+            border-color: black;
+            position: absolute;
+            left: 345px;
+            top: 110px;
+        }
+        .black::after{
+            z-index: 1;
+            border-color: black;
+            border-top-color: transparent;
+            border-right-color: transparent;
+        }
+    </style>
+</head>
+<body>
+<div class="circle blue"></div>
+<div class="circle yellow"></div>
+<div class="circle red"></div>
+<div class="circle green"></div>
+<div class="circle black"></div>
+</body>
+</html>
