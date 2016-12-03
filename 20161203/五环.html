@@ -8,7 +8,12 @@
             padding: 0;
             margin: 0;
         }
-
+        #container{
+            height: 400px;
+            position: relative;
+            margin: 150px ;
+            /*background: gray;*/
+        }
         .circle, .circle::after {
             width: 200px;
             height: 200px;
@@ -82,10 +87,13 @@
     </style>
 </head>
 <body>
-<div class="circle blue"></div>
-<div class="circle yellow"></div>
-<div class="circle red"></div>
-<div class="circle green"></div>
-<div class="circle black"></div>
+<div id="container">
+    <div class="circle blue"></div>
+    <div class="circle yellow"></div>
+    <div class="circle red"></div>
+    <div class="circle green"></div>
+    <div class="circle black"></div>
+</div>
+
 </body>
 </html>
