@@ -21,7 +21,16 @@
             border-radius: 50%;
             position: relative;
         }
+         #clock::after{
+             content: "12 3 6 9";
+             display: block;
+             width: 200px;
+             height: 200px;
+             border: 1px solid black;
+             border-radius: 50%;
+             position: relative;
 
+         }
         #dial li {
             width: 2px;
             height: 4px;
@@ -37,6 +46,7 @@
         }
 
         #hour {
+            border-radius: 50%;
             width: 6px;
             height: 35px;
             background: black;
@@ -45,13 +55,17 @@
             top: 65px;
             -webkit-transform-origin: center bottom;
         }
-        #hour .point{
-            height: 2px;
-            width: 6px;
-            border-radius: 50%;
+        /*#hour .point{*/
+            /*height: 2px;*/
+            /*width: 4px;*/
+            /*border: 1px dashed;*/
+            /*border-radius: 50%;*/
+            /*position: absolute;*/
+            /*z-index: 1;*/
 
-        }
+        /*}*/
         #minute {
+            border-radius: 50%;
             width: 4px;
             height: 45px;
             background: #ccc;
@@ -59,11 +73,12 @@
             left: 98px;
             top: 55px;
             -webkit-transform-origin: center bottom;
-
         }
 
 
         #second {
+            border-radius: 50%;
+
             width: 2px;
             height: 55px;
             background: #f00;
@@ -73,15 +88,14 @@
             -webkit-transform-origin: center bottom;
 
         }
-      .point{
-          width: 1px;
-          height: 1px;
-          background: cornflowerblue;
-          border: 1px dashed;
-          position: absolute;
-          top: 0;
-          border-radius: 50%;
-      }
+      /*.point{*/
+          /*width: 1px;*/
+          /*height: 1px;*/
+          /*background: cornflowerblue;*/
+          /*border: 1px dashed;*/
+          /*position: absolute;*/
+          /*border-radius: 50%;*/
+      /*}*/
     </style>
 </head>
 <body>
