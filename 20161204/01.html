@@ -9,17 +9,23 @@
 
         body {
             -webkit-perspective: 800px;
+            -webkit-perspective-origin: center 100%;
 
         }
 
         #div1 {
+            position: relative;
             transform-style: preserve-3d;
-
             width: 200px;
             height: 200px;
             background: red;
             margin: 100px auto;
-            -webkit-transform: rotateY(60deg);
+            /*-webkit-transform: rotateY(60deg);*/
+            -webkit-animation: XXX 2s linear infinite;
+        }
+        @-webkit-keyframes XXX {
+            from{}
+            to{-webkit-transform: rotateY(-360deg)}
         }
     </style>
     <meta charset="UTF-8">
