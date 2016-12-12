@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个性旋转按钮</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #container {
+            width: 240px;
+            height: 300px;
+            /*background: grey;*/
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            /*-webkit-perspective: 800px;*/
+        }
+
+        #container img {
+            -webkit-transition: all 1s ease;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            /*border: 1px solid grey;*/
+            /*border-radius: 50%;*/
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <img src="img/close.png" alt="">
+    <img src="img/full.png" alt="">
+    <img src="img/open.png" alt="">
+    <img src="img/prev.png" alt="">
+    <img src="img/refresh.png" alt="">
+    <img src="img/home.png" alt="">
+</div>
+</body>
+<script>
+    var oContainer = document.getElementById('container');
+    var aImg = oContainer.getElementsByTagName('img');
+//    console.log(aImg[aImg.length - 1]);
+    var flage = true;
+
+    aImg[aImg.length - 1].onclick = function () {
+        if (flage) {
+            for (var i = 0; i < aImg.length - 1; i++) {
+                var x = -170 * Math.sin(i * 22.5 * Math.PI / 180);
+                var y = -170 * Math.cos(i * 22.5 * Math.PI / 180);
+                //空格的问题在拼字符串的时候是不能有的，即不能加空格
+                aImg[i].style.webkitTransitionDelay = i*50+'ms';
+                aImg[i].style.webkitTransform = 'translate(' + x + 'px,' + y + 'px) rotateX(-360deg)';
+                //console.log('translate( ' + x + 'px,' + y + ' px) rotate(-360deg)');
+            }
+            this.style.WebkitTransform = 'rotateZ(-360deg)';
+        }
+        else {
+            for ( i = 0; i < aImg.length - 1; i++) {
+                aImg[i].style.webkitTransitionDelay = aImg.length-1-i*50+'ms';
+                //空格的问题在拼字符串的时候是不能有的，即不能加空格
+                aImg[i].style.webkitTransform = 'translate(0px,0px) rotateX(0deg)';
+                //console.log('translate( ' + x + 'px,' + y + ' px) rotate(-360deg)');
+            }
+            this.style.WebkitTransform = 'rotateZ(0deg)';
+        }
+        flage = !flage;
+    }
+</script>
+</html>
