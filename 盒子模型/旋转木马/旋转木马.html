@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转木马</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #table{
+            width: 500px;
+            height: 400px;
+            margin: 100px auto;
+            background: grey;
+            position: relative;
+        }
+        #container{
+            width: 180px;
+            height: 100px;
+            position: absolute;
+            left: 50%;
+            top: 150px;
+            margin-left:-90px;
+            background: black;
+
+        }
+        #container img{
+            width: 180px;
+            height: 100px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="table">
+    <div id="container">
+
+    </div>
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var oImg = new Image();
+    var iNow = 0;
+    for(var i=0 ; i<9;i++){
+        iNow++;
+        if (iNow==9){
+
+        }
+    }
+    oContainer.appendChild(oImg);
+    oImg.src = 'img/0'+1+'.jpg';
+    var aImg = document.getElementsByTagName('img');
+</script>
+</body>
+</html>
