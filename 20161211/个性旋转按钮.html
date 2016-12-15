@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个性旋转按钮</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #container{
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+        #container img{
+            -webkit-transition: all 1s ease;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <img src="img/close.png" alt="">
+    <img src="img/full.png" alt="">
+    <img src="img/open.png" alt="">
+    <img src="img/prev.png" alt="">
+    <img src="img/refresh.png" alt="">
+    <img src="img/home.png" alt="">
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var aImg = oContainer.getElementsByTagName('img');
+    var flage = true;
+    aImg[aImg.length-1].onclick = function () {
+        if (flage){
+            for(var i=0;i<aImg.length-1;i++){
+                var x = -160*Math.sin(22.5*i*Math.PI/180);
+                var y = -160*Math.cos(22.5*i*Math.PI/180);
+                aImg[i].style.webkitTransitionDelay = i*30+'ms';
+                aImg[i].style.webkitTransform = 'translate('+x+'px,'+y+'px) rotate(-360deg)'
+            }
+            this.style.webkitTransform = 'rotateZ(-360deg)';
+        }
+        else {
+            for( i=0;i<aImg.length-1;i++){
+                aImg[i].style.webkitTransitionDelay = aImg[i].length-1-i*30+'ms';
+                aImg[i].style.webkitTransform = 'translate(0px,0px) rotate(0deg)'
+            }
+            this.style.webkitTransform = 'rotateZ(0deg)';
+
+        }
+        flage = !flage;
+    }
+</script>
+</body>
+</html>
