@@ -136,7 +136,6 @@
         }, 100);
 
         var flag = true;
-        var arr=[];
         function fn() {
             if (flag) {
                 var fnLeft = (oContainer.offsetWidth - 750) / 2;
@@ -149,7 +148,7 @@
                     var oSpan = aDiv[i].getElementsByTagName('span')[0];
                     oSpan.style.opacity = 1;
 //                    console.log(this.index);
-                    iNow = this.index + 1;
+                    iNow = this.index;
                     oSpan.style.background = 'url(img/' + (this.index + 1) + '.jpg) ' + (-125 * aDiv[i].rowCol.col) + 'px ' + (-125 * aDiv[i].rowCol.row) + 'px';
                     // oSpan.style.background = 'url(img/'+ (this.index+ 1) +'.jpg) '+ (-125*aDiv[i].rowCol.col) +'px '+ (-125*aDiv[i].rowCol.row) +'px';
                     clearInterval(timer);
@@ -157,11 +156,6 @@
                     oPrev.style.display = 'block';
                     arr.push(i);
 //                    console.log(arr);
-                    oNext.onclick = function () {
-                         var a=arr.pop();
-                        console.log(a);
-                        oSpan.style.background = 'url(img/' + (iNow + 1) + '.jpg) ' + (-125 * aDiv[a].rowCol.col) + 'px ' + (-125 * aDiv[a].rowCol.row) + 'px';
-                    }
                 }
             } else {
                 for (i = 0; i < aDiv.length; i++) {
@@ -177,7 +171,43 @@
             }
             flag = !flag;
         }
+
+        oNext.onclick = oPrev.onclick= function () {
+            if(this==oNext){
+               iNow++;
+                if(iNow==oDiv.length){
+                    iNow=0;
+                }
+            }else {
+                iNow--;
+                if(iNow==-1){
+                    iNow = oDiv.length - 1;
+                }
+            }
+            var arr=[];
+            for(var i =0 ;i<24;i++){
+                arr.push(i);
+            }
+            
+            arr.sort(function () {
+                return Math.random()-0.5;
+            });
+
+            var aa=0;
+
+          var timer2=setInterval(function () {
+              var idx = arr.pop();
+                var oSpan = aDiv[idx].getElementsByTagName('span')[0];
+              oSpan.style.background = 'url(img/'+ (iNow+1) +'.jpg) '+ (-125*aDiv[idx].rowCol.col) +'px '+ (-125*aDiv[idx].rowCol.row) +'px';
+              aa++;
+                if(aa==24){
+                   clearInterval(timer2);
+                }
+            },10);
+        }
     }
+
+    
 </script>
 </body>
 </html>
