@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加上课的人</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/resect.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/add-inclass.css">
+</head>
+<body>
+<header id="header">
+    <div class="container clearfix">
+        <div class="arrow fl"><a href="index.html"><img src="img/11icn_back.png" alt=""></a></div>
+        <div class="h2 login fl">
+            <h2>上课人信息 </h2>
+        </div>
+        <div class="h2 register fr">
+            <h2>保存</h2>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="name">
+        <div class="nameSpace">
+            姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名
+        </div>
+        <input class="inp" type="text" placeholder="请输入学生名字">
+    </div>
+    <div class="name mt">
+        <div class="nameSpace">
+            性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别
+        </div>
+        <span class="containerFont">请选择</span><img class="containerImg" src="img/22icn_go_gray.png" alt="">
+    </div>
+    <div class="name mt">
+        <div class="nameSpace">
+            年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级
+        </div>
+        <span class="containerFont">请选择</span><img class="containerImg" src="img/22icn_go_gray.png" alt="">
+    </div>
+    <div class="name mt">
+        <div class="nameSpace">
+            所在区域
+        </div>
+        <span class="containerFont">请选择</span><img class="containerImg" src="img/22icn_go_gray.png" alt="">
+    </div>
+    <div class="name">
+        <div class="nameSpace">
+            详细地址
+        </div>
+        <input class="inp" type="text" placeholder="请填写详细地址">
+    </div>
+</div>
+<div id="mask"></div>
+<div id="foot">
+    <div class="son-content" style="border-bottom: 0.089rem solid rgb(240, 240, 240)">
+        拍照
+    </div>
+
+    <div class="son-content">
+        从相册选择
+    </div>
+    <hr>
+    <div class="son-content">
+        取消
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+                $('.name.mt').on('click', function () {
+                    $('#mask').toggle();
+                    $("#mask").css("height", $(document).height());
+                    $("#mask").css("width", $(document).width());
+                    $('#mask').css('backgroundColor', 'gray');
+                    $('#mask').css('opacity', '0.3');
+                    $('#foot').slideDown(300);
+                });
+                $('#mask').on('click', function () {
+                    $('#mask').toggle();
+                    $('#mask').css('opacity', '0');
+                    $('#foot').slideUp(300);
+                });
+                $(document).on('scroll', function () {
+                    $('#mask').toggle();
+                    $('#mask').css('opacity', '0');
+                    $('#foot').slideUp(300);
+                })
+            }
+    );
+
+</script>
+</body>
+</html>

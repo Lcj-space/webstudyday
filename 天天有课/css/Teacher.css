@@ -172,17 +172,17 @@ button, html input[type=button], input[type=reset], input[type=submit] {
     margin-bottom: 0;
 }
 
-.people .bsOne{
+.people .bsOne {
     font-size: 1.42rem;
     color: #646464;
 }
 
-.people .bsTwo{
+.people .bsTwo {
     font-size: 1.067rem;
     color: #646464;
 }
 
-.people .bs{
+.people .bs {
     font-size: 1.067rem;
     color: #E66D6D;
     margin-left: 0.44rem;
@@ -199,14 +199,14 @@ button, html input[type=button], input[type=reset], input[type=submit] {
 /*right: 0.89rem;*/
 /*background: black;*/
 /*}*/
-.people .attention{
+.people .attention {
     top: 50%;
     right: 1.6rem;
     position: absolute;
     margin-top: -0.8rem;
 }
 
-.people .attention img{
+.people .attention img {
     width: 2.13rem;
     height: 3.2rem;
 }
@@ -233,8 +233,9 @@ button, html input[type=button], input[type=reset], input[type=submit] {
     width: auto;
     padding: 0 0.89rem;
     height: 5.69rem;
-    margin-bottom: 0.89rem;
+    /*margin-bottom: 0.89rem;*/
     border-bottom: 0.089rem solid #E6E6E6;
+    margin-bottom: 5rem;
 }
 
 .Tcontainer {
@@ -265,22 +266,116 @@ button, html input[type=button], input[type=reset], input[type=submit] {
     right: 0;
     top: 0;
 }
- .two{
-     border-top:0.089rem solid #E6E6E6;;
- }
 
-  .TOne{
-     font-size: 0.89rem;
-      color: #646464;
- }
+.two {
+    border-top: 0.089rem solid #E6E6E6;;
+}
 
-  .TTwo{
-      font-size: 1.33rem;
+.TOne {
+    font-size: 0.89rem;
+    color: #646464;
+}
 
-      color: #636363;
-  }
-  .TThree{
-      font-size: 1.33rem;
+.TTwo {
+    font-size: 1.33rem;
 
-      color: #e05e1f;
-  }
+    color: #636363;
+}
+
+.TThree {
+    font-size: 1.33rem;
+
+    color: #e05e1f;
+}
+
+/*nav*/
+#nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 4.1777rem;
+    /*line-height: 4.1777rem;*/
+    /*background-color: #fafafa;*/
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fafafa), color-stop(1, #f1f1f1));
+    border-top: 0.0888888rem #d2d2d2 solid;
+    /*display: box;*/
+    display: -webkit-box;
+    display: -moz-box;
+}
+
+#nav a {
+    display: block;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    text-align: center;
+    color: #969696;
+    text-shadow: 0 1px 1px white;
+    font-size: 0.8888rem;
+    text-decoration: none;
+}
+
+#nav .icon {
+    width: 1.9555rem;
+    height: 1.9555rem;
+    margin: 0.5555rem auto 0.44444rem auto;
+}
+
+#nav .teacherIcon .icon {
+    background: url("../img/10_02icn_tec_def.png.png") no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+#nav .teacherIcon.active .icon {
+    background: url("../img/10_01icn_tec_sel.png.png") no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+#nav .HomeTeacherIcon .icon {
+    background: url("../img/10_04icn_tut_def.png") no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+#nav .HomeTeacherIcon.active .icon {
+    background: url("../img/10_03icn_tut_sel.png") no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+#nav .sweepIcon .icon {
+    background: url("../img/10_06icn_scan_sel.png") no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+#nav .sweepIcon.active .icon {
+    background: url("../img/10_05icn_scan_clk.png") no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+#nav .syllabusIcon .icon {
+    background: url("../img/10_08icn_tit_def.png") no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+#nav .syllabusIcon.active .icon {
+    background: url("../img/10_07icn_tit_sel.png") no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+#nav .userIcon .icon {
+    background: url("../img/10_10icn_psn_def.png") no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+#nav .userIcon.active .icon {
+    background: url("../img/10_09icn_psn_sel.png") no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}

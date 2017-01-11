@@ -199,7 +199,7 @@ button, html input[type=button], input[type=reset], input[type=submit] {
  .footer{
      width: 100%;
      height: 4.27rem;
-     position: absolute;
+     position: fixed;
      bottom: 0;
      background: #2c93e0;
      font-size: 1.6rem;
@@ -207,3 +207,4 @@ button, html input[type=button], input[type=reset], input[type=submit] {
      text-align: center;
      line-height: 4.27rem;
  }
+
