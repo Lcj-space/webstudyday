@@ -136,6 +136,7 @@
         }, 100);
 
         var flag = true;
+
         function fn() {
             if (flag) {
                 var fnLeft = (oContainer.offsetWidth - 750) / 2;
@@ -154,7 +155,7 @@
                     clearInterval(timer);
                     oNext.style.display = 'block';
                     oPrev.style.display = 'block';
-                    arr.push(i);
+//                    arr.push(i);
 //                    console.log(arr);
                 }
             } else {
@@ -172,42 +173,43 @@
             flag = !flag;
         }
 
-        oNext.onclick = oPrev.onclick= function () {
-            if(this==oNext){
-               iNow++;
-                if(iNow==oDiv.length){
-                    iNow=0;
+        oNext.onclick = oPrev.onclick = function () {
+            if (this == oNext) {
+                iNow++;
+                if (iNow == aDiv.length) {
+                    console.log(aDiv.length);
+                    iNow = 0;
                 }
-            }else {
+            } else {
                 iNow--;
-                if(iNow==-1){
-                    iNow = oDiv.length - 1;
+                if (iNow == -1) {
+                    iNow = aDiv.length - 1;
                 }
             }
-            var arr=[];
-            for(var i =0 ;i<24;i++){
+            var arr = [];
+            for (var i = 0; i < 24; i++) {
                 arr.push(i);
             }
-            
+
             arr.sort(function () {
-                return Math.random()-0.5;
+                return Math.random() - 0.5;
             });
 
-            var aa=0;
+            var aa = 0;
 
-          var timer2=setInterval(function () {
-              var idx = arr.pop();
+            var timer2 = setInterval(function () {
+                var idx = arr.pop();
                 var oSpan = aDiv[idx].getElementsByTagName('span')[0];
-              oSpan.style.background = 'url(img/'+ (iNow+1) +'.jpg) '+ (-125*aDiv[idx].rowCol.col) +'px '+ (-125*aDiv[idx].rowCol.row) +'px';
-              aa++;
-                if(aa==24){
-                   clearInterval(timer2);
+                oSpan.style.background = 'url(img/' + (iNow + 1) + '.jpg) ' + (-125 * aDiv[idx].rowCol.col) + 'px ' + (-125 * aDiv[idx].rowCol.row) + 'px';
+                aa++;
+                if (aa == 24) {
+                    clearInterval(timer2);
                 }
-            },10);
+            }, 30);
         }
     }
 
-    
+
 </script>
 </body>
 </html>
