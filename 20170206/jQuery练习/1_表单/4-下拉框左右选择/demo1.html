@@ -95,6 +95,18 @@ span {
 			$('#remove_all').click(function () {
 				$('#select2 option').prop('selected',true).appendTo('#select1');
 			});
+			//事件委托方法,防止没有将事件加进去。
+			$('#select1').on('dblclick','option',function () {
+				$(this).appendTo('#select2');
+			});
+			$('#select2').on('dblclick','option',function () {
+				$(this).appendTo('#select1');
+			});
+			$('#select1').on('dblclick',function () {
+				$('option:selected',this).appendTo('#select2');
+				$(this).find('option:selected').appendTo('#select2');
+			});
+
 		})
 	</script>
 
