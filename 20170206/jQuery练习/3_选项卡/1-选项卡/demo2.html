@@ -40,8 +40,12 @@
 			//文档就绪函数
 			$(function(){
 		     $('ul>li').mouseover(function () {
-                 $('div').attr('divOne',true).siblings().attr('divOne',false);
-             })
+				 $(this).attr('id','liOne').siblings().attr('id','');
+				 var index= $(this).index();
+//                 $('div').attr('divOne',true).siblings().attr('divOne',false);
+//             $('div').hide().stop().eq(index).fadeIn(1000).show();
+				 $('div').stop().eq(index).fadeIn().siblings('div').hide().fadeOut();
+			 })
 			})
 	</script>
     </head>
