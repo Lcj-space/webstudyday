@@ -12,7 +12,7 @@
         #content {
             width: 660px;
             height: 510px;
-            background: gray;
+            /*background: gray;*/
             margin: 100px auto;
         }
 
@@ -51,8 +51,8 @@
         aImg[i].style.left = aImg[i].offsetLeft + 'px';
         aImg[i].style.top = aImg[i].offsetTop + 'px';
         aImg[i].style.position = 'absolute';
-        drag(aImg[i]);
         aImg[i].style.margin = 0;
+        drag(aImg[i]);
 
     }
     function drag(elem) {
