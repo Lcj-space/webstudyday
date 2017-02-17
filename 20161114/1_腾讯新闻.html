@@ -22,6 +22,7 @@
             bottom: 40px;
             right: 40px;
             z-index: 999;
+
         }
 
         #tab .select {
@@ -129,6 +130,8 @@
     var oNext = document.getElementById('next');
     var index = 0;
     var zIndex =aImg.length;
+    oTab.innerHTML = oTab.innerHTML + oTab.innerHTML;
+
     for (var i = 0; i < aLi.length; i++) {
         aLi[i].index = i;
         aImg[i].style.zIndex = aImg.length - i;
@@ -166,9 +169,17 @@
 
     timer = setInterval(function () {
         oNext.onclick();
-    },2000)
+    },2000);
 
+  oContent.onmouseover=function () {
+      clearInterval(timer);
+  };
 
+  oContent.onmouseout =function () {
+      timer = setInterval(function () {
+          oNext.onclick();
+      },2000);
+  }
 </script>
 </body>
 </html>
