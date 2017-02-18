@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>分区搜索算法-20143479罗崇杰</title>
+    <title>内存分配-20143479罗崇杰</title>
     <style>
         * {
             margin: 0;
@@ -46,22 +46,28 @@
             width: 250px;
             height: 420px;
             left: 0;
+            overflow: hidden;
         }
+        #size li{
+            border: 2px solid gray;
 
+        }
         #address {
             position: absolute;
             width: 250px;
             height: 420px;
             left: 250px;
             top: 0;
+            overflow: hidden;
         }
 
+        #address li{
+            border: 2px solid gray;
+        }
         li {
             height: 60px;
             line-height: 60px;
             text-align: center;
-            transition: transform 2s;
-            /*text-shadow: 5px 5px 5px #000000;*/
         }
 
         #foot {
@@ -100,7 +106,7 @@
     </style>
 </head>
 <body onselectstart="return false">
-<header>分区搜索算法-20143479罗崇杰</header>
+<header>内存分配算法-20143479罗崇杰</header>
 <div id="container">
     <div id="content">
         <ul id="size">
@@ -123,7 +129,7 @@
         </ul>
     </div>
     <div id="foot">
-        <input id="num" placeholder="请输入分配数量" onfocus="this.value=''" onkeyup='this.value=this.value.replace(/\D/gi,"")'/>
+        <input id="num" placeholder="请输入分配的内存" onfocus="this.value=''" onkeyup='this.value=this.value.replace(/\D/gi,"")'/>
         <span id="firAdapt">首次适应</span>
         <span id="preAdapt">最佳适应</span>
         <span id="reset">回收内存</span>
@@ -133,7 +139,7 @@
     window.onload = function () {
         (function () {
             var oFirAdapt = document.getElementById('firAdapt');
-            var oPreAdapt = document.getElementById('preAdapt');
+            var oBestAdapt = document.getElementById('preAdapt');
             var oReset = document.getElementById('reset');
             var oSize = document.getElementById('size');
             var oAddress = document.getElementById('address');
@@ -149,9 +155,7 @@
             }
             oFirAdapt.onclick = function () {
                 for (i = 1; i < aSize.length; i++) {
-                    aSize[i].style.transform = '';
                     aSize[i].style.backgroundColor = '';
-                    aAddress[i].style.transform = '';
                     aAddress[i].style.backgroundColor = '';
                 }
                 var num = parseInt(oInput.value);
@@ -159,9 +163,7 @@
                     if (parseInt(arrSize[i]) >= num) {
                         aSize[i].innerText = parseInt(aSize[i].innerText) - num;
                         aAddress[i].innerText = parseInt(aAddress[i].innerText) + num;
-                        aSize[i].style.transform = 'rotate(360deg)';
                         aSize[i].style.backgroundColor = '#00a4d8';
-                        aAddress[i].style.transform = 'rotate(360deg)';
                         aAddress[i].style.backgroundColor = '#00a4d8';
                         for (i = 0; i < aSize.length; i++) {
                             arrSize[i] = aSize[i].innerText;
@@ -171,11 +173,9 @@
                     }
                 }
             };
-            oPreAdapt.onclick = function () {
+            oBestAdapt.onclick = function () {
                 for (i = 1; i < aSize.length; i++) {  //初始化状态
-                    aSize[i].style.transform = '';
                     aSize[i].style.backgroundColor = '';
-                    aAddress[i].style.transform = '';
                     aAddress[i].style.backgroundColor = '';
                 }
                 arrDynamic = []; //清空数组
@@ -196,9 +196,7 @@
                 });
                 aSize[arrDynamic[0].index].innerText -= num;  //-可以强制转换
                 aAddress[arrDynamic[0].index].innerText = parseInt(aAddress[arrDynamic[0].index].innerText) + num;
-                aSize[arrDynamic[0].index].style.transform = 'rotate(360deg)';
                 aSize[arrDynamic[0].index].style.backgroundColor = '#00a4d8';
-                aAddress[arrDynamic[0].index].style.transform = 'rotate(360deg)';
                 aAddress[arrDynamic[0].index].style.backgroundColor = '#00a4d8';
                 for (i = 0; i < aSize.length; i++) {
                     arrSize[i] = aSize[i].innerText;
@@ -207,7 +205,6 @@
             };
             oReset.onclick = function () {
                 window.location.reload();
-
             };
         })();
     }
