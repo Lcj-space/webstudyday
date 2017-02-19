@@ -3,19 +3,29 @@
  */
 define(['jquery'], function ($) {
     return {
-        open: function () {
+        // this就是retrun的对象
+        open: function (options) {
+            var sitting={
+                width: 500,
+                height: 400,
+                title:"这是标题"
+            };
+            $.extend(sitting,options);
             var that = this;
             this.$container = $('<div class="demo-container">');
             var $mask = $('<div class="demo-mask"></div>').on('click', function () {
                 that.close();
             });
-            var $content = $('<div class="demo-content">');
+            var $content = $('<div class="demo-content">').css({
+                width:sitting.width,
+                height:sitting.height
+            });
             var $demoTitle = $('<div class="demo-title">');
-            var $title = $('<span class="title">这是标题</span>');
+            var $title = $('<span class="title">'+sitting.title +'</span>');
             var $close = $('<span class="close">[X]</span>').on('click',function () {
                 that.close();
             });
-            var $main = $('<div class="demo-main"></div>');
+            var $main = $('<div class="demo-main"></div>').load(sitting.url);
             $demoTitle.append($title).append($close);
             $content.append($demoTitle).append($main);
             this.$container.append($mask).append($content);
