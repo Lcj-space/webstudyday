@@ -1,0 +1,64 @@
+<!--<link rel="stylesheet" href="css/changeimg.css">-->
+<div class="container">
+    <div class="content">
+        <img src="img/1.jpg" alt="" class="imgSelected">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+        <img src="img/4.jpg" alt="">
+    </div>
+    <div class="tab">
+        <ul>
+            <li class="liSelected">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <div class="row">
+        <span class="left">&lt;</span>
+        <span class="right">&gt;</span>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script>
+    var oLi = $('li');
+    var oContainer = $('.container');
+    var oLeft = $('.left');
+    var oRight = $('.right');
+    var idx = 0;
+    oLi.mouseover(function () {
+        $(this).addClass('liSelected').siblings('li').removeClass('liSelected');
+        var idx = $(this).index();
+        $('.content img').eq(idx).addClass('imgSelected').siblings('img').removeClass('imgSelected');
+    });
+    function changeImg() {
+        idx++;
+        if (idx == oLi.size()) {
+            idx = 0;
+        }
+        $('li:eq(' + idx + ')').addClass('liSelected').siblings().removeClass('liSelected');
+        $('.content img:eq(' + idx + ')').addClass('imgSelected').siblings().removeClass('imgSelected');
+    }
+    function run() {
+        timer = setInterval(changeImg, 2000);
+    }
+    run();
+    oLeft.on('click',function () {
+//        console.log(idx);
+        if(idx){
+            idx--;
+        }else {
+            idx = oLi.size() -1;
+        }
+        oLi.eq(idx).addClass('liSelected').siblings('li').removeClass('liSelected');
+        $('.content img').eq(idx).addClass('imgSelected').siblings('img').removeClass('imgSelected');
+    });
+
+    oRight.on('click',changeImg);
+
+    oContainer.hover(function () {
+        clearInterval(timer);
+    }, function () {
+        run();
+    })
+</script>
