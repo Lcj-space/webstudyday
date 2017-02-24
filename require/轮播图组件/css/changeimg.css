@@ -4,11 +4,12 @@
     position: relative;
     margin:  50px auto;
     /*left: 100px;*/
-    /*background: red;*/
+    background: red;
 }
 .content{
     width: 613px;
     height: 230px;
+    /*background: red;*/
 }
 .content img{
     width: 613px;
@@ -16,7 +17,7 @@
    display: none;
     position: absolute;
 }
-.content .imgSelected{
+.content  .imgSelected{
     display: block;
 }
 .tab{
