@@ -8,12 +8,14 @@
             padding: 0;
             margin: 0;
         }
-        #container{
+
+        #container {
             height: 400px;
             position: relative;
-            margin: 150px ;
+            margin: 150px;
             /*background: gray;*/
         }
+
         .circle, .circle::after {
             width: 200px;
             height: 200px;
@@ -21,64 +23,75 @@
             border-radius: 50%;
             position: relative;
         }
-        .circle::after{
+
+        .circle::after {
             content: '';
             display: block;
-            position: relative;
+            /*position: relative;*/
             left: -10px;
             top: -10px;
         }
+
         .blue {
             border-color: blue;
             position: absolute;
             left: 0;
             top: 0;
         }
-        .blue::after{
+
+        .blue::after {
             z-index: 1;
             border-color: blue;
             border-bottom-color: transparent;
 
         }
+
         .yellow {
             border-color: yellow;
             position: absolute;
             left: 230px;
             top: 0;
         }
-        .yellow::after{
+
+        .yellow::after {
             z-index: 1;
             border-color: yellow;
             border-left-color: transparent;
         }
+
         .red {
             border-color: red;
             position: absolute;
             left: 460px;
             top: 0;
         }
-        .red::after{
+
+        .red::after {
             z-index: 1;
             border-color: red;
             border-left-color: transparent;
         }
+
         .green {
             border-color: green;
             position: absolute;
             left: 115px;
             top: 110px;
         }
-        .green::after{
+
+        .green::after {
             border-color: green;
             border-left-color: transparent;
         }
+
         .black {
             border-color: black;
             position: absolute;
             left: 345px;
             top: 110px;
         }
-        .black::after{
+
+        .black::after {
             z-index: 1;
             border-color: black;
             border-top-color: transparent;
