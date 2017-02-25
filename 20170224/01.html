@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function L(obj) {
+        this.name= obj.name;
+    }
+    L.prototype.eat = function () {
+      console.log(this.name+'eat');
+    };
+//    var b = new L({
+//        name:123
+//    });
+//    console.log(b.name);
+//    b.eat();
+    var b =new L();
+//    b({
+//        name:456
+//    })
+
+        console.log(b.name);
+</script>
+</body>
+</html>
