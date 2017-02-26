@@ -32,12 +32,16 @@ define(['jquery'], function ($) {
                 $content.append($demoTitle).append($main);
                 this.$container.append($mask).append($content);
                 $(document.body).append(this.$container);
-            }
+            };
 
-    Dialog.prototype.close =function () {
-        this.$container.remove();
-    };
-    return Dialog;
+            Dialog.prototype.close =function () {
+                   this.$container.remove();
+           };
+
+
+           return Dialog;
+
+
     // return {
     //     // this就是retrun的对象
     //     open: function (options) {
