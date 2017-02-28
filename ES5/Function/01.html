@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function repeatStringNumTimes(string,times) {
+        var repeatedArr=[];
+        while (times>0){
+            repeatedArr.push(string);
+            times--;
+        }
+        console.log(repeatedArr);
+        return repeatedArr.join('');
+    }
+    repeatStringNumTimes('ab',3);
+</script>
+</body>
+</html>
