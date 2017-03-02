@@ -16,7 +16,7 @@ require(['jquery', 'dialog'], function ($, Dialog) {
         });
         // return dialog;
     });
-    $('#btn2').on('click', function (dialog) {
+    $('#btn2').on('click', function () {
 
         if (arr.length>0){
             arr.pop().close();
