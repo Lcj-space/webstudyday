@@ -11,9 +11,15 @@
         var str = prompt("");
 //    var i=0;
         for(var i=0;i<str.length;i++){
-            if(str.charAt(i)!=str.charAt(i+1)){
+            if(str.indexOf(str.charAt(i))==str.lastIndexOf(str.charAt(i))){
                 document.write(str.charAt(i));
+                break;
             }
+//            if(str.split(str.charAt(i)).length==2){
+//                document.write(str.charAt(i));
+//                break;
+//            }
+
         }
     }
 

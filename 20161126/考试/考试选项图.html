@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+         ul li{
+             float: left;
+             list-style: none;
+         }
+        #container {
+            width: 400px;
+            height: 434px;
+            background: gray;
+            margin: 100px auto;
+            /*overflow: hidden;*/
+            position: relative;
+        }
+        #content {
+            width: 400px;
+            height: 320px;
+        }
+        #content img{
+            width: 400px;
+            height: 320px;
+            position: absolute;
+            top: 0 ;
+            left: 0;
+        }
+        #small{
+            width: 400px;
+            height: 80px;
+            position: absolute;
+            bottom: 0;
+            background: gray;
+            overflow: hidden;
+        }
+        #small img{
+            width: 100px;
+            height: 60px;
+            margin: 10px;
+        }
+        #prev,#next{
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            background: gray;
+            z-index: 2;
+            top: 130px;
+            text-align: center;
+            line-height: 60px;
+
+        }
+        #prev{
+            left: 0;
+            background: url("img/btn.gif");
+
+        }
+        #next{
+            right: 0;
+            background: url("img/btn.gif")0 -60px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <img src="img/1.jpg" alt="" style="z-index: 1">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+        <img src="img/4.jpg" alt="">
+        <img src="img/5.jpg" alt="">
+        <img src="img/6.jpg" alt="">
+    </div>
+    <div id="small">
+        <ul>
+            <li><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.jpg" alt=""></li>
+            <li><img src="img/3.jpg" alt=""></li>
+            <li><img src="img/4.jpg" alt=""></li>
+            <li><img src="img/5.jpg" alt=""></li>
+            <li><img src="img/6.jpg" alt=""></li>
+        </ul>
+    </div>
+    <div id="btn">
+        <span id="prev"></span>
+        <span id="next"></span>
+    </div>
+</div>
+</body>
+</html>
