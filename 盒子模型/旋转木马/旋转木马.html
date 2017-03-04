@@ -14,6 +14,8 @@
             margin: 100px auto;
             background: grey;
             position: relative;
+            -webkit-perspective: 800px;
+            -webkit-perspective-origin: 50% -10%;
         }
         #container{
             width: 180px;
@@ -22,13 +24,17 @@
             left: 50%;
             top: 150px;
             margin-left:-90px;
-            background: black;
+            /*background: black;*/
+            -webkit-transform-style: preserve-3d;
+            -webkit-transition: transform .5s ease-in-out;
 
         }
         #container img{
             width: 180px;
             height: 100px;
             position: absolute;
+            -webkit-transition: all .5s ease-in-out;
+
         }
     </style>
 </head>
@@ -40,17 +46,32 @@
 </div>
 <script>
     var oContainer = document.getElementById('container');
-    var oImg = new Image();
     var iNow = 0;
     for(var i=0 ; i<9;i++){
-        iNow++;
-        if (iNow==9){
-
-        }
+        var oImg = new Image();
+        oImg.onload=function () {
+            iNow++;
+            if (iNow==9){
+              for(var i=0;i<aImg.length;i++){
+                  (function (index) {
+                      setTimeout(function () {
+                          aImg[index].style.webkitTransform='rotateY('+ index*40+'deg) translateZ('+ (dis+20) +'px)'
+                      },(9-i)*100)
+                  })(i)
+              }
+            }
+        };
+        oImg.src = 'img/'+(i+1)+'.jpg';
+        oContainer.appendChild(oImg);
     }
-    oContainer.appendChild(oImg);
-    oImg.src = 'img/0'+1+'.jpg';
     var aImg = document.getElementsByTagName('img');
+    var dis   = aImg[0].offsetWidth/2/Math.tan(20*Math.PI/180);
+
+    var idx = 0;
+    oContainer.onclick=function () {
+        idx++;
+        this.style.webkitTransform='rotateY('+ idx*40+'deg)'
+    }
 </script>
 </body>
 </html>
