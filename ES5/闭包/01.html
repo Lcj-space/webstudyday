@@ -10,6 +10,7 @@
     var object = {
         name : 'my object',
         getNameFunc : function () {
+//            通过声明一个that来实现改变返回函数this的指向
             var that = this;
             return function () {
                 return that.name ;
