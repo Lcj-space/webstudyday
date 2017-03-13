@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function CollModule() {
+        var something = "cool";
+        var another =[1,2,3];
+        function doSomething() {
+            console.log(something);
+        }
+        function doAnother() {
+            console.log(another.join('！'));
+        }
+//        return CollModule;
+        return {
+            doSomething:doSomething,
+            doAnother:doAnother
+        };
+    }
+    var foo = CollModule();
+    foo.doSomething();
+    foo.doAnother();
+</script>
+</body>
+</html>
