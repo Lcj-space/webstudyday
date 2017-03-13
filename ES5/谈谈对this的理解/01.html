@@ -7,8 +7,8 @@
 <body>
 <script>
 //    只有function才有prototype
-//1.所有引用类型值为种类但是function
-//    2.所用的new出来的实例都是object，除了大写的Function是function
+//    1.所有引用类型值为种类但是function
+//    2.所用的new出来的实例都是object，除了大写的Function new出来的是function
      var aa =123;
      console.log(typeof(aa));
      console.log(typeof(Function));
@@ -18,9 +18,9 @@
      console.log(Array instanceof Function);
      console.log(Array instanceof Object);
      console.log(Object instanceof Array);
-     var obj = new Object();
-     var arr = new Array();
-     console.log(obj.__prototype__ == Array.prototype);
+//     var obj = new Object();
+//     var arr = new Array();
+//     console.log(obj.__prototype__ == Array.prototype);
     function Time(){
         aa = '1';
         function bb(){
