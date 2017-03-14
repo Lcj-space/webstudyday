@@ -32,6 +32,7 @@ gulp.task('sass',function () {
 
 gulp.task('severs',function () {
     connect.server({
+
        root:'dest',
         livereload:true
     })
