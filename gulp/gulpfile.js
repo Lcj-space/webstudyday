@@ -32,10 +32,13 @@ gulp.task('sass',function () {
 
 gulp.task('severs',function () {
     connect.server({
-
        root:'dest',
         livereload:true
     })
 });
 
 gulp.task('a',['watch','severs']);
+
+gulp.task('bb',function () {
+
+});
