@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    模块内的方法是封装起来的无法直接访问，必须通过return 这一句话才能把这个对象返回
+    function CollModule() {
+        var something ='cool';
+        var another = [1,2,3];
+        function doSomething() {
+            console.log(something);
+        }
+        function doAnother() {
+            console.log(another.join('!'));
+        }
+//        ---------------------------------------
+        var result={
+            doSomething:doSomething,
+                    doAnother:doAnother
+        };
+        return result;
+
+    }
+    var foo = CollModule();
+    foo.doSomething();
+    foo.doAnother();
+</script>
+</body>
+</html>
