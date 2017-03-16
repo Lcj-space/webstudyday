@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    使用了立即调用函数省去了很多的代码
+    var foo = (function CoolModule(id) {
+        function change() {
+            publicAPI.identify = identify2;
+        }
+        function identify1() {
+            console.log(id);
+        }
+        function identify2() {
+            console.log(id.toUpperCase());
+        }
+        var publicAPI ={
+            change:change,
+            identify:identify1
+        };
+        return publicAPI;
+    })('foo module');
+    foo.identify();
+    foo.change();
+    foo.identify();
+</script>
+</body>
+</html>
