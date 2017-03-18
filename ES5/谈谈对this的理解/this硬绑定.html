@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function foo(somthing) {
+        console.log(this.a);
+        return this.a + somthing;
+    }
+    var obj ={
+        a:2
+    };
+    function bind(fn,obj) {
+        return function () {
+            return fn.apply(obj,arguments);
+        };
+    }
+    var bar = bind(foo,obj);
+//    var bar = function () {
+//       return foo.apply(obj,arguments);
+//    };
+    var b = bar(3);
+    console.log(b);
+</script>
+</body>
+</html>
