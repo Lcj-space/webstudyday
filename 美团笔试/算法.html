@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var A = [4,5,6,8];
+    var B =[5,8,7,9,12];
+    function Count(arr1,arr2) {
+    var com = [];
+        for(var i=0;i<arr1.length;i++){
+            for (var j=0 ;j< arr2.length;j++){
+                if (arr1[i]==arr2[j]){
+                    com.push(arr1[i]);
+                    alert(i);
+                }
+            }
+        }
+        return com;
+    }
+
+    console.log(Count(A,B));
+
+</script>
+</body>
+</html>
