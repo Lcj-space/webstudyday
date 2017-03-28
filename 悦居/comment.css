@@ -1,0 +1,89 @@
+     .comment-top{
+         width: 100%;
+         height: 44px;
+         background: #fff;
+         /*background: red;*/
+         text-align: center;
+         position: relative;
+
+     }
+    .comment-top span{
+        display: inline-block;
+        line-height: 44px;
+        font-size: 17px;
+        color: #000;
+    }
+
+    .comment-top:after {
+        content: "";
+        width: 100%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 1px;
+        border-bottom: 1px solid #b2b2b2;
+    }
+
+    .page-comments::before{
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .mod-rating {
+        text-align: center;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 45px;
+        padding: 10px 0;
+        background-color: #fff;
+        border-bottom: 1px solid #cacaca;
+        font-size: 15px;
+    }
+    .commentInfo li{
+        float: left;
+        width: 25%;
+        border-right: 1px dotted #cacaca;
+    }
+     .commentInfo li em{
+         display: block;
+         font-size: 20px;
+         color: #f60;
+         line-height: 22px;
+     }
+     .commentInfo .score-rating{
+         width: 42%;
+         border-right:0;
+         padding: 0 3.5%;
+     }
+     .commentInfo .score-rating span{
+         float: left;
+         width: 50%;
+         font-size: 12px;
+         line-height: 22px;
+         color: #999;
+         white-space: nowrap;
+         text-align: center;
+     }
+
+     .mtab-list-hd{
+         margin-bottom: 10px;
+         border-top: 1px solid #cacaca;
+         border-bottom: 1px solid #cacaca;
+         background-color: #fff;
+         display: -webkit-box;
+         display: -ms-flexbox;
+         display: flex;
+     }
+     .mtab-list-hd span{
+         display: block;
+         line-height: 24px;
+         border-left: 1px solid #cacaca;
+         white-space: nowrap;
+     }
+
+     .mtab-list-hd>.item.current {
+         color: #f60;
+         margin-bottom: -1px;
+         border-bottom: 3px solid #f60;
+     }
