@@ -10,14 +10,23 @@
     var B =[5,8,7,9,12];
     function Count(arr1,arr2) {
     var com = [];
-        for(var i=0;i<arr1.length;i++){
-            for (var j=0 ;j< arr2.length;j++){
-                if (arr1[i]==arr2[j]){
-                    com.push(arr1[i]);
-                    alert(i);
-                }
-            }
-        }
+//        for(var i=0;i<arr1.length;i++){
+//            for (var j=0 ;j< arr2.length;j++){
+//                if (arr1[i]==arr2[j]){
+//                    com.push(arr1[i]);
+//                    alert(i);
+//                }
+//            }
+//        }
+        arr1.concat(arr2).filter(function (com) {
+            return com.message.match(/ /)
+        });
+//        for (var  i=0;i<s.length;i++){
+//            if (s.indexOf(i)==s.lastIndexOf(i)){
+//                com.push(s.valueOf(i));
+//            }
+//        }
+
         return com;
     }
 
