@@ -8,9 +8,29 @@
 <script>
     var arr=[1,3,3,3,5];
     str=[];
-    str= new Set(arr);
+    str1=[];
+//    for(var i=0 ;i<arr.length;i++){
+//        for(var j= i + 1 ;j<arr.length;j++){
+//            if (arr[i]==arr[j]){
+//                str.push(arr[i]);
+//            }else {
+//                str1.push(arr[i]);
+//            }
+//        }
+//    }
+    for(var i=0 ;i<arr.length;i++){
+        for(var j= i + 1 ;j<arr.length;j++){
+            if (arr[i]==arr[j]){
+                str.push(arr[i]);
+            }else {
+                j++;
+            }
+        }
+    }
+//    str= new Set(arr);
 //    arr.filter(function (value,index) {return arr.valueOf(index)==arr.valueOf(index+1)? str.push(arr.splice(index,1)[0]):arr.push(value)})
-    console.log(str);
+//    console.log(str[0] ,'('+ str.length +')');
+//    console.log(str1[0] ,'('+ str1.length +')');
 </script>
 </body>
 </html>
