@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var arr= [1,4,6,2,9,3];
+    var swap = function(i,j) {
+        var t;
+        t = arr[i] ;
+        arr[i] = arr[j];
+        arr[j] = t;
+    };
+    var  bubbleSort =function(arr) {
+         l = arr.length;
+        for (var i=0;i<l;i++){
+            for (var j=i;j<l;j++){
+                if(arr[i]>arr[j]){
+                    swap(i,j);
+                }
+            }
+        }
+        return arr;
+    };
+    console.log(bubbleSort(arr).toString());
+</script>
+</body>
+</html>
