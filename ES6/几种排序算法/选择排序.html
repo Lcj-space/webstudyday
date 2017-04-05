@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择排序</title>
+</head>
+<body>
+选择排序是一种原始地址比较排序算法。
+选择排序大致的思路是找到数据结构中最小值并将其放在第一位。
+<script>
+    var arr= [1,4,6,2,9,3];
+    var swap = function(i,j) {
+        var t;
+        t = arr[i] ;
+        arr[i] = arr[j];
+        arr[j] = t;
+    };
+    var  bubbleSort =function(arr) {
+        var l = arr.length,
+        indexmin
+        ;
+        for (var i=0;i<l;i++){
+            indexmin = i;
+            for (var j=i+1;j<l;j++){
+                if(arr[indexmin]>arr[j]){
+                      indexmin = j;
+                }
+            }
+            if (i != indexmin){
+                swap(i,indexmin);
+            }
+        }
+        return arr;
+    };
+    console.log(bubbleSort(arr).toString());
+</script>
+</body>
+</html>
