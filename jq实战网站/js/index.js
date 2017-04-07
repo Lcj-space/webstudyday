@@ -11,14 +11,14 @@ $(function () {
     $('.tab li').hover(function () {
         $(this).addClass('selectedLi').siblings('li').removeClass('selectedLi');
         var index = $(this).index();
-//            $('.imgContent img').stop().eq(index).fadeIn(600).show().siblings('img').fadeOut(600).hide();
-//            $('.imgContent img').hide().stop().eq(index).fadeIn(600);
-        $('.imgContent img').hide().stop().eq(index).fadeIn(600);
+//            $('.imgContent imgs').stop().eq(index).fadeIn(600).show().siblings('imgs').fadeOut(600).hide();
+//            $('.imgContent imgs').hide().stop().eq(index).fadeIn(600);
+        $('.imgContent imgs').hide().stop().eq(index).fadeIn(600);
     }, function () {
         $(this).removeClass('selectedLi');
         $('.tab li:first-child').addClass('selectedLi');
-//            $('.imgContent img').stop().eq(index).siblings('img').fadeOut(600).hide();
-        $('.imgContent img').stop().eq(index).show().siblings('img').fadeOut();
+//            $('.imgContent imgs').stop().eq(index).siblings('imgs').fadeOut(600).hide();
+        $('.imgContent imgs').stop().eq(index).show().siblings('imgs').fadeOut();
     });
 
     var iNow=0;
