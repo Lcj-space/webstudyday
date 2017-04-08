@@ -35,11 +35,11 @@ define(['jquery'], function ($) {
         // alert(options.imgDate.length);
         for (var i = 0; i < siting.imgDate.length; i++) {
             $ul.append('<li>' + (i + 1) + '</li>');
-            $content.append('<img src="' + siting.imgDate[i] + '">');
+            $content.append('<imgs src="' + siting.imgDate[i] + '">');
         }
-        // alert( $('.content>img').eq(0));
-        // $('.content img').eq(0).addClass('imgSelected');
-        $('img', $content).eq(0).addClass('imgSelected');
+        // alert( $('.content>imgs').eq(0));
+        // $('.content imgs').eq(0).addClass('imgSelected');
+        $('imgs', $content).eq(0).addClass('imgSelected');
         $('li', $ul).eq(0).addClass('liSelected');
         if(siting.btnLike=='circle'){
             $('li', $ul).addClass(siting.btnLike);
@@ -58,7 +58,7 @@ define(['jquery'], function ($) {
         });
 
         function changeImg(idx) {
-            $('img', $content).eq(idx).addClass('imgSelected').siblings().removeClass('imgSelected');
+            $('imgs', $content).eq(idx).addClass('imgSelected').siblings().removeClass('imgSelected');
             $('li', $ul).eq(idx).addClass('liSelected').siblings().removeClass('liSelected');
         }
         run();
