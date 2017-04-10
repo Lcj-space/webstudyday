@@ -1,4 +1,4 @@
-(function ($) {
+$(function ($) {
     $.fn.slideDown = function (duration) {
         var position = this.css('position');
         this.show();
@@ -22,7 +22,7 @@
             height: 0
         }, duration);
     };
-})(Zepto);
+});
 
 $('.left-all').on('tap', function () {
     $(this).addClass('current').siblings('div').removeClass('current');
@@ -55,9 +55,9 @@ $(function () {
     $('.pics-list li').on('tap', function (e) {
         var index = $(this).index();
         iNow = index;
-        $imgShow.show().css('opacity', '0.9');
+        $imgShow.show();
         $tab.css({
-            background: 'url(imgs/' + (index + 5) + '.jpg) no-repeat center',
+            background: '#fff url(imgs/' + (index + 5) + '.jpg) no-repeat center',
             backgroundSize: 'contain',
             // opacity: '1'
         });
