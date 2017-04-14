@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="wechatpay.css">
+</head>
+<body>
+<div class="header">
+    <div class="wei"></div>
+    <header id="header">
+        <div class="wrapBox">
+            <a href="welcome/index" class="logo">
+            <img src="image/logo.png" alt="logo">
+            <span class="logo-txt">便利你的生活</span>
+            </a>
+            <nav class="topNav">
+                <ul>
+                    <li><a href="welcome/index">首页</a></li>
+                    <li><a href="house/index">房源中心</a></li>
+                    <li><a id="person_center" href="javascript:;">个人中心</a></li>
+                    <li><a href="welcome/yueju_detail">关于悦居</a></li>
+                    <li><a href="javascript:;" id="login">登录 / 注册</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <script type="text/x-template" id="modal-template">
+        <transition name="modal">
+            <div class="modal-mask">
+                <div class="modal-wrapper">
+                    <div class="modal-container">
+                        <div class="modal-header">
+                            <slot name="header">
+                                <button class="close" data-dismiss="modal" aria-hidden="true" @click="$emit('close')">
+                                    &times;
+                                </button>
+                            </slot>
+                        </div>
+                        <div class="modal-body">
+                            <slot name="body">
+                            </slot>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </script>
+</div>
+<div class="main">
+    <div class="w">
+        <!-- order 订单信息 -->
+        <div class="order clearfix order-noQrcode">
+            <!-- 订单信息 -->
+            <div class="o-left"><h3 class="o-title">订单提交成功，请尽快付款！订单号：51156455002</h3>
+
+                <p class="o-tips">
+
+
+                </p>
+            </div>
+            <!-- 订单信息 end --><!-- 订单金额 -->
+            <div class="o-right">
+                <div class="o-price"><em>应付金额</em><strong>82.30</strong><em>元</em></div>
+            </div>
+            <!-- 订单金额 end -->
+            <div class="o-list j_orderList" id="listPayOrderInfo"><!-- 单笔订单 -->
+
+                <!-- 多笔订单 end -->
+            </div>
+        </div>
+
+        <script src="js/jquery-1.12.4.js"></script>
+        <script>
+            $(function () {
+                //订单支付时间倒计时
+                if ($(".j_orderTime").length > 0) {
+                    var time = $(".j_orderTime").attr("data-time") * 60;
+                    paymentUI.setOrderCountdown('.j_orderTime', time, function () {
+                        window.location.href = "//" + window.location.hostname + "/success/fail?orderId=" + globalVar.orderId + "&cashierId=" + globalVar.cashierId + "&messageCode=PAYING0000002";
+                    })
+                }
+            });
+
+        </script>
+        <script type="text/javascript">
+            var payOrder = {
+                toggleDetail: function (ele) {
+                    var $orderList = $('.j_orderList');
+                    if (!$(ele).hasClass('opened')) {
+                        //查询订单信息
+                        $.ajax({
+                            url: "/async/getOrderInfo?orderId=" + globalVar.orderId,
+                            type: "get",
+                            dataType: "html",
+                            error: function () {
+                                $("#listPayOrderInfo").html("");
+                            },
+                            success: function (data) {
+                                $("#listPayOrderInfo").html(data);
+                                $orderList.slideDown(300);
+                                $(ele).addClass('opened').html('收起详情<i></i>');
+                            }
+                        });
+                    } else {
+                        $orderList.slideUp(300);
+                        $(ele).removeClass('opened').html('订单详情<i></i>');
+                    }
+
+                }
+            };
+        </script>        <!-- order 订单信息 end -->
+
+        <!-- payment 支付方式选择 -->
+        <div class="payment">
+            <!-- 微信支付 -->
+            <div class="pay-weixin">
+                <div class="p-w-hd">微信支付</div>
+                <div class="p-w-bd" style="position:relative">
+                    <div class="j_weixinInfo font-red" style="position:absolute; top: -36px; left: 130px;">二维码已过期，<a
+                            href="javascript:getWeixinImage2();">刷新</a>页面重新获取二维码。
+                    </div>
+                    <div class="p-w-box">
+                        <div class="pw-box-hd">
+                            <img id="weixinImageURL"
+                                 src="//img30.360buyimg.com/jr_image/jfs/t2893/157/4205885241/62385/951af5d5/57b51ea9Nb862ca5e.png"
+                                 width="298" height="298">
+                        </div>
+                        <div class="pw-retry j_weixiRetry" style="display: none;">
+                            <a class="ui-button ui-button-gray j_weixiRetryButton" href="javascript:getWeixinImage2();">获取失败
+                                点击重新获取二维码 </a>
+                        </div>
+                        <div class="pw-box-ft">
+                            <p>请使用微信扫一扫</p>
+                            <p>扫描二维码支付</p>
+                        </div>
+                    </div>
+                    <div class="p-w-sidebar"></div>
+                </div>
+            </div>
+            <!-- 微信支付 end -->
+            <!-- payment-change 变更支付方式 -->
+            <div class="payment-change">
+                <a class="pc-wrap" onclick="window.history.go(-1)">
+                    <i class="pc-w-arrow-left">&lt;</i>
+                    <strong>选择其他支付方式</strong>
+                </a>
+            </div>
+            <!-- payment-change 变更支付方式 end -->
+        </div>
+        <!-- payment 支付方式选择 end -->
+    </div>
+</div>
+</body>
+</html>
