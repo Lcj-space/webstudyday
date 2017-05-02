@@ -9,7 +9,7 @@ var idx = 0;
 oLi.mouseover(function () {
     $(this).addClass('liSelected').siblings('li').removeClass('liSelected');
     var idx = $(this).index();
-    $('.content img').eq(idx).addClass('imgSelected').siblings('img').removeClass('imgSelected');
+    $('.content imgs').eq(idx).addClass('imgSelected').siblings('imgs').removeClass('imgSelected');
 });
 function changeImg() {
     idx++;
@@ -17,7 +17,7 @@ function changeImg() {
         idx = 0;
     }
     $('li:eq(' + idx + ')').addClass('liSelected').siblings().removeClass('liSelected');
-    $('.content img:eq(' + idx + ')').addClass('imgSelected').siblings().removeClass('imgSelected');
+    $('.content imgs:eq(' + idx + ')').addClass('imgSelected').siblings().removeClass('imgSelected');
 }
 function run() {
     timer = setInterval(changeImg, 1000);
@@ -31,7 +31,7 @@ oLeft.on('click',function () {
         idx = oLi.size() -1;
     }
     oLi.eq(idx).addClass('liSelected').siblings('li').removeClass('liSelected');
-    $('.content img').eq(idx).addClass('imgSelected').siblings('img').removeClass('imgSelected');
+    $('.content imgs').eq(idx).addClass('imgSelected').siblings('imgs').removeClass('imgSelected');
 });
 
 oRight.on('click',changeImg);
