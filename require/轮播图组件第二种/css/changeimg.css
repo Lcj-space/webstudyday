@@ -28,7 +28,7 @@
     right: 0;
     bottom: 10px;
     opacity: 0.5;
-    z-index: 9999;
+    z-index: 99999;
     overflow: hidden;
 }
 
@@ -42,6 +42,7 @@
     background: black;
     text-align: center;
     color: #00a4d8;
+    cursor: pointer;
 }
 
 .tab .liSelected {
@@ -85,4 +86,5 @@
     text-align: center;
     line-height: 20px;
     margin-left: 5px;
+    cursor: pointer;
 }
