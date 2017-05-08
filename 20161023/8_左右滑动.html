@@ -37,8 +37,17 @@
             width: 400px;
             height: 470px;
             border-top: 1px black solid;
+            display: none;
+        }
+       #tab .selected{
+           background: deepskyblue;
 
-
+       }
+        #content .selected{
+            background: deepskyblue;
+            display: block;
+            width: 400px;
+            height: 470px;
         }
     </style>
 </head>
@@ -63,13 +72,12 @@
     for(var i=0;i<aLi.length;i++){
         aLi[i].index=i;
         aLi[i].onclick=function () {
-            var oSub=aDiv[this.index];
             for (var i=0;i<aLi.length;i++){
                 aLi[i].className='';
-                oSub.className='';
+                aDiv[i].className='';
             }
             aLi[this.index].className='selected';
-            oSub.className='selected';
+            aDiv[this.index].className='selected';
         }
     }
 </script>
