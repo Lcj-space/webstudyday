@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*.container div{*/
+        /*width:49.5%;*/
+        /*height: 70px;*/
+        /*background: #008400;*/
+        /*text-align: center;*/
+        /*line-height: 70px;*/
+        /*margin: 2px;*/
+        /*color: #e7f5ec;*/
+        /*}*/
+        /*.container div:nth-child(2n+1) {*/
+        /*float: right;*/
+
+        /*}*/
+        /*.container div:nth-child(2n) {*/
+        /*float: left;*/
+
+        /*}*/
+
+        /*.clearfix {*/
+        /*overflow: hidden;*/
+        /*_zoom: 1;*/
+        /*}*/
+
+        .container {
+            display: flex;
+            flex-direction: row-reverse;
+            flex-wrap: wrap;
+        }
+
+        .container div {
+            width: 49.5%;
+            height: 70px;
+            background: #008400;
+            text-align: center;
+            line-height: 70px;
+            margin: 2px;
+            color: #e7f5ec;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container clearfix">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+
+</body>
+</html>
