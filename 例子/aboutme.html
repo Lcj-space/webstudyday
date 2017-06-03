@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+        #basic-information{
+            width: 100%;
+            background-color: #324057;
+        }
+        .comment{
+            width: 960px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        /*.comment:after{*/
+            /*content: "";*/
+            /*display: block;*/
+            /*height: 0;*/
+            /*clear: both;*/
+        /*}*/
+        .comment span,.comment a{
+            color: #F9FAFC;
+        }
+
+        .comment a:hover{
+            color: #F7BA2A;
+            transition: all 0.3s;
+            text-decoration: underline;
+        }
+        .information{
+            float: left;
+            padding: 10px 0;
+        }
+        .my-img{
+            margin: 10px 0;
+            float: right;
+            height: 140px;
+            width: 140px;
+            border-radius:50%;
+            overflow: hidden;
+        }
+        .my-img img{
+            width: 140px;
+            height: 140px;
+        }
+    </style>
+</head>
+<body>
+    <div id="basic-information">
+        <div class="comment">
+            <div class="information">
+                <span>名 字 :&nbsp&nbsp罗崇杰</span><br>
+                <span>性 别 :&nbsp&nbsp男</span><br>
+                <span>手 机 :&nbsp&nbsp15545956712</span><br>
+                <span>邮 箱 :&nbsp&nbsp<a href="mailto:1367546524@qq.com">1367546524@qq.com</a></span><br>
+                <span>点 击 :&nbsp&nbsp<a href="https://github.com/Lcj-space">GitHub</a></span><br>
+                <span>地 址 : &nbsp&nbsp黑龙江大学A9</span>
+            </div>
+            <div class="my-img">
+                <img src="myImg.jpg" alt="我的照片">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
