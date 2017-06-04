@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        #top {
+            position: relative;
+            min-height: 400px;
+            width: 100%;
+            background-color: #FFCF17;
+            overflow: hidden;
+        }
+
+        #top .back {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: white;
+            position: absolute;
+            margin: 25px 0 0 25px;
+        }
+        #top .back img{
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        #top .top-img-content {
+            height: 100%;
+        }
+
+        #top .top-img {
+            margin: 25px auto 0 auto;
+            border-radius: 50%;
+            width: 280px;
+            height: 280px;
+            background: whitesmoke;
+            overflow: hidden;
+        }
+
+        #top .top-img img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+        }
+
+        #top .top-words {
+            width: 280px;
+            height: 80px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .top-words span {
+            color: #00B09E;
+            font-size: 30px;
+        }
+
+        .top-words .title {
+            display: inline-block;
+            font-size: 40px;
+            border-bottom: 1px solid #00B09E;
+            margin-bottom: 5px;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 1200px;
+            background: white;
+            /*display: flex;*/
+            /*flex-direction: column;*/
+            overflow: hidden;
+        }
+
+        .container .container-item {
+            background: whitesmoke;
+            height: 190px;
+            margin-top: 41px;
+            position: relative;
+        }
+
+        .container-item {
+            overflow: hidden;
+            border: 1px solid yellow;
+            display: flex;
+        }
+
+        /*选择收信还是发送信的样式*/
+        .container-item.choice {
+            height: 190px;
+            justify-content: space-around;
+
+            border: 0;
+        }
+
+        .choice button {
+            margin: 60px auto;
+            width: 360px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            color: whitesmoke;
+            background: #FFCF17;
+            font-size: 35px;
+        }
+
+        /*选择收信还是发送信的样式结束*/
+
+        /*每条信息的样式的开始*/
+        .container-item .container-left, .container-item .container-right {
+            font-size: 40px;
+        }
+
+        .container-item .container-left {
+            float: left;
+            text-align: center;
+            height: 160px;
+            width: 20%;
+            margin-left: 20px;
+        }
+
+        .container-item .container-left img {
+            width: 120px;
+            height: 120px;
+        }
+
+        .container-item .container-left .container-people-name {
+            font-size: 30px;
+        }
+
+        .container-item .vertical-line {
+            width: 5px;
+            height: 140px;
+            background: #FFCF17;
+            float: left;
+            margin: 20px;
+        }
+
+        .container-item .container-right {
+            width: 76%;
+            height: 100%;
+            float: left;
+            text-align: center;
+        }
+
+        .container-right p {
+            /*display: -webkit-box;!*兼容FSafari、Chrome*!*/
+
+            /*-moz-box-pack: start;!*兼容Firefox*!*/
+            /*-webkit-box-pack: start;!*兼容FSafari、Chrome *!*/
+            display: inline-flex;
+           flex-wrap:  wrap;
+            margin-top: 5px;
+            font-size: 25px;
+        }
+
+        .container-right button {
+            background: #FFCF17;
+            width: 120px;
+            height: 40px;
+            border: 0;
+            border-radius: 30%;
+            font-size: 20px;
+            color: #F90606;
+            position: absolute;
+            left: 50%;
+            bottom: 5%
+        }
+
+        .container .container-time {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            font-size: 20px;
+        }
+        /*将显示的信息放在一个容器内*/
+        .container .container-show-detail{
+            overflow: auto;
+            height: 1350px;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            min-height: 150px;
+            background: #FFCF17;
+        }
+    </style>
+</head>
+<body>
+<div id="top">
+    <div class="back">
+        <img src="back.png" alt="">
+    </div>
+    <div class="top-img-content">
+        <div class="top-img"><img src="p.png" alt=""></div>
+        <div class="top-words">
+            <span class="title">时 光 漫 步</span><br>
+            <span>WALKING TIME</span>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="container-item choice">
+        <button>我收到的信</button>
+        <button>我发送的信</button>
+    </div>
+    <div class="container-show-detail">
+        <div class="container-item">
+            <div class="container-left">
+                <div class="container-img">
+                    <img src="blackboard.png" alt="">
+                </div>
+                <span class="container-people-name">刘晓光</span>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="container-right">
+                <span class="container-title">C919将于5月5日上午在浦东机场首飞</span>
+                <p>&nbsp;&nbsp;5月3日，澎湃新闻记者从中国商获悉，目前国产大型飞机C919定于5日在上海浦东机场首飞，如天气条件。则延期</p>
+                <button>阅读详情</button>
+                <span class="container-time">2017-06-03 10:48:45</span>
+            </div>
+        </div>
+        <div class="container-item">
+            <div class="container-left">
+                <div class="container-img">
+                    <img src="blackboard.png" alt="">
+                </div>
+                <span class="container-people-name">刘晓光</span>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="container-right">
+                <span class="container-title">C919将于5月5日上午在浦东机场首飞</span>
+                <p>&nbsp;&nbsp;5月3日，澎湃新闻记者从中国商获悉，目前国产大型飞机C919定于5日在上海浦东机场首飞，如天气条件。则延期</p>
+                <button>阅读详情</button>
+                <span class="container-time">2017-06-03 10:48:45</span>
+            </div>
+        </div>
+        <div class="container-item">
+            <div class="container-left">
+                <div class="container-img">
+                    <img src="blackboard.png" alt="">
+                </div>
+                <span class="container-people-name">刘晓光</span>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="container-right">
+                <span class="container-title">C919将于5月5日上午在浦东机场首飞</span>
+                <p>&nbsp;&nbsp;5月3日，澎湃新闻记者从中国商获悉，目前国产大型飞机C919定于5日在上海浦东机场首飞，如天气条件。则延期</p>
+                <button>阅读详情</button>
+                <span class="container-time">2017-06-03 10:48:45</span>
+            </div>
+        </div>
+        <div class="container-item">
+            <div class="container-left">
+                <div class="container-img">
+                    <img src="blackboard.png" alt="">
+                </div>
+                <span class="container-people-name">刘晓光</span>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="container-right">
+                <span class="container-title">C919将于5月5日上午在浦东机场首飞</span>
+                <p>&nbsp;&nbsp;5月3日，澎湃新闻记者从中国商获悉，目前国产大型飞机C919定于5日在上海浦东机场首飞，如天气条件。则延期</p>
+                <button>阅读详情</button>
+                <span class="container-time">2017-06-03 10:48:45</span>
+            </div>
+        </div>
+        <div class="container-item">
+            <div class="container-left">
+                <div class="container-img">
+                    <img src="blackboard.png" alt="">
+                </div>
+                <span class="container-people-name">刘晓光</span>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="container-right">
+                <span class="container-title">C919将于5月5日上午在浦东机场首飞</span>
+                <p>&nbsp;&nbsp;5月3日，澎湃新闻记者从中国商获悉，目前国产大型飞机C919定于5日在上海浦东机场首飞，如天气条件。则延期</p>
+                <button>阅读详情</button>
+                <span class="container-time">2017-06-03 10:48:45</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="footer">
+
+</div>
+</body>
+</html>
